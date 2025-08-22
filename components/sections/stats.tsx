@@ -22,7 +22,7 @@ import { FadeIn } from '@/components/animations/fade-in';
 import { StaggerContainer } from '@/components/animations/stagger-container';
 
 interface Stat {
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   label: string;
   value: string;
   subtext: string;
@@ -133,8 +133,6 @@ const achievementStats = [
 ];
 
 export function Stats() {
-  const [isVisible, setIsVisible] = useState(false);
-
   return (
     <section
       id='stats'
@@ -163,7 +161,6 @@ export function Stats() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          onViewportEnter={() => setIsVisible(true)}
           viewport={{ once: true, margin: '-100px' }}
           className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16'>
           {mainStats.map((stat, index) => {
@@ -185,19 +182,21 @@ export function Stats() {
                       <Icon className='h-8 w-8 text-white' />
                     </div>
 
-                    <div className='text-3xl md:text-4xl font-bold text-gray-900 mb-2'>
+                    <div className='text-3xl md:text-4xl font-bold text-slate-900 mb-2'>
                       {stat.value}
                     </div>
 
-                    <h3 className='font-semibold text-gray-900 mb-2'>
+                    <h3 className='font-semibold text-slate-800 mb-2'>
                       {stat.label}
                     </h3>
-                    <p className='text-gray-600 text-sm mb-4'>{stat.subtext}</p>
+                    <p className='text-slate-600 text-sm mb-4 leading-relaxed'>
+                      {stat.subtext}
+                    </p>
 
                     {stat.trend && (
                       <Badge
                         variant='secondary'
-                        className={`text-xs ${stat.color}`}>
+                        className='text-xs bg-slate-100 text-slate-700 border-slate-200 font-medium'>
                         <TrendingUp className='h-3 w-3 mr-1' />
                         {stat.trend}
                       </Badge>
@@ -226,13 +225,15 @@ export function Stats() {
                     className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center mx-auto mb-4`}>
                     <Icon className='h-6 w-6 text-white' />
                   </div>
-                  <div className='text-xl md:text-2xl font-bold text-gray-900 mb-1'>
+                  <div className='text-xl md:text-2xl font-bold text-slate-900 mb-1'>
                     {stat.value}
                   </div>
-                  <div className='font-medium text-gray-900 text-sm mb-1'>
+                  <div className='font-medium text-slate-800 text-sm mb-1'>
                     {stat.label}
                   </div>
-                  <div className='text-xs text-gray-500'>{stat.subtext}</div>
+                  <div className='text-xs text-slate-500 leading-relaxed'>
+                    {stat.subtext}
+                  </div>
                 </motion.div>
               );
             })}
@@ -247,7 +248,7 @@ export function Stats() {
                 Recognition & Achievements
               </h3>
               <p className='text-gray-600 max-w-2xl mx-auto'>
-                RidePaddy's commitment to excellence has been recognized by
+                RidePaddy&apos;s commitment to excellence has been recognized by
                 industry leaders and our growing community across Nigeria.
               </p>
             </div>
@@ -282,64 +283,72 @@ export function Stats() {
 
         {/* Real-time Stats Counter */}
         <FadeIn delay={0.6}>
-          <div className='bg-gradient-to-r from-primary to-primary-600 rounded-3xl p-8 md:p-12 text-white text-center'>
-            <div className='mb-8'>
-              <h3 className='text-2xl md:text-3xl font-bold mb-4'>
-                Live Community Impact
-              </h3>
-              <p className='text-green-100 max-w-2xl mx-auto leading-relaxed'>
-                Watch our community grow in real-time as more Nigerians discover
-                the power of shared transportation.
-              </p>
-            </div>
+          <div className='bg-gradient-to-br from-primary via-secondary to-success rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden'>
+            {/* Gradient overlay for depth */}
+            <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 rounded-3xl'></div>
+            {/* Decorative elements */}
+            <div className='absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl'></div>
+            <div className='absolute bottom-0 left-0 w-24 h-24 bg-success/20 rounded-full blur-xl'></div>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className='bg-white/10 backdrop-blur-sm rounded-2xl p-6'>
-                <div className='text-3xl md:text-4xl font-bold mb-2'>
-                  <LiveCounter target={2547892} />
-                </div>
-                <div className='text-green-100 font-medium mb-1'>
-                  Total Trips Completed
-                </div>
-                <div className='text-green-200 text-sm'>
-                  +127 in the last hour
-                </div>
-              </motion.div>
+            <div className='relative z-10'>
+              <div className='mb-8'>
+                <h3 className='text-2xl md:text-3xl font-bold mb-4'>
+                  Live Community Impact
+                </h3>
+                <p className='text-green-100 max-w-2xl mx-auto leading-relaxed'>
+                  Watch our community grow in real-time as more Nigerians
+                  discover the power of shared transportation.
+                </p>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className='bg-white/10 backdrop-blur-sm rounded-2xl p-6'>
-                <div className='text-3xl md:text-4xl font-bold mb-2'>
-                  ₦<LiveCounter target={2547} />M
-                </div>
-                <div className='text-green-100 font-medium mb-1'>
-                  Money Saved Today
-                </div>
-                <div className='text-green-200 text-sm'>+₦45K every hour</div>
-              </motion.div>
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className='bg-white/10 backdrop-blur-sm rounded-2xl p-6'>
+                  <div className='text-3xl md:text-4xl font-bold mb-2'>
+                    <LiveCounter target={2547892} />
+                  </div>
+                  <div className='text-green-100 font-medium mb-1'>
+                    Total Trips Completed
+                  </div>
+                  <div className='text-green-200 text-sm'>
+                    +127 in the last hour
+                  </div>
+                </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className='bg-white/10 backdrop-blur-sm rounded-2xl p-6'>
-                <div className='text-3xl md:text-4xl font-bold mb-2'>
-                  <LiveCounter target={52847} />
-                </div>
-                <div className='text-green-100 font-medium mb-1'>
-                  Active Community Members
-                </div>
-                <div className='text-green-200 text-sm'>+23 joined today</div>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className='bg-white/10 backdrop-blur-sm rounded-2xl p-6'>
+                  <div className='text-3xl md:text-4xl font-bold mb-2'>
+                    ₦<LiveCounter target={2547} />M
+                  </div>
+                  <div className='text-green-100 font-medium mb-1'>
+                    Money Saved Today
+                  </div>
+                  <div className='text-green-200 text-sm'>+₦45K every hour</div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className='bg-white/10 backdrop-blur-sm rounded-2xl p-6'>
+                  <div className='text-3xl md:text-4xl font-bold mb-2'>
+                    <LiveCounter target={52847} />
+                  </div>
+                  <div className='text-green-100 font-medium mb-1'>
+                    Active Community Members
+                  </div>
+                  <div className='text-green-200 text-sm'>+23 joined today</div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </FadeIn>

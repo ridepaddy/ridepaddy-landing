@@ -170,10 +170,10 @@ export function Waitlist() {
                         <CheckCircle className='h-8 w-8 text-green-600' />
                       </div>
                       <h3 className='text-xl font-semibold text-gray-900 mb-2'>
-                        You're on the list! 🎉
+                        You&apos;re on the list! 🎉
                       </h3>
                       <p className='text-gray-600 mb-6'>
-                        We'll send you an email when RidePaddy launches in your
+                        We&apos;ll send you an email when RidePaddy launches in your
                         city.
                       </p>
                       <Button
@@ -539,8 +539,8 @@ export function Waitlist() {
                   </div>
                 </div>
                 <p className='text-sm text-gray-500 italic'>
-                  "Can't wait for RidePaddy to launch! This is exactly what
-                  Lagos needs."{' '}
+                  &quot;Can&apos;t wait for RidePaddy to launch! This is exactly what
+                  Lagos needs.&quot;{' '}
                   <span className='font-semibold'>- Adebayo O.</span>
                 </p>
               </div>

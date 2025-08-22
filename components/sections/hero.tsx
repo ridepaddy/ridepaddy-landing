@@ -67,7 +67,7 @@ export function Hero() {
             {/* Stats */}
             <FadeIn delay={1.0}>
               <div className='flex flex-wrap justify-center lg:justify-start gap-6'>
-                {stats.map((stat, index) => {
+                {stats.map((stat) => {
                   const Icon = stat.icon;
                   return (
                     <div

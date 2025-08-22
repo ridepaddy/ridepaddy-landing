@@ -2,21 +2,41 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, X, Car, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-const navigation = [
-  { name: 'Features', href: '#features' },
-  { name: 'How It Works', href: '#how-it-works' },
-  { name: 'Safety', href: '#safety' },
-  { name: 'Download', href: '#download' },
+// Smart navigation function
+const getNavigation = (pathname: string) => [
+  { 
+    name: 'About', 
+    href: pathname === '/' ? '#about' : '/about',
+  },
+  { 
+    name: 'Features', 
+    href: pathname === '/' ? '#features' : '/#features',
+  },
+  { 
+    name: 'How It Works', 
+    href: pathname === '/' ? '#how-it-works' : '/#how-it-works',
+  },
+  { 
+    name: 'Safety', 
+    href: pathname === '/' ? '#safety' : '/#safety',
+  },
+  { 
+    name: 'Download', 
+    href: pathname === '/' ? '#download' : '/#download',
+  },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const navigation = getNavigation(pathname);
 
   useEffect(() => {
     const handleScroll = () => {

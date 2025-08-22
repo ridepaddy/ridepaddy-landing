@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Car,
   Mail,
@@ -14,12 +15,13 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-const footerLinks = {
+// Smart footer navigation
+const getFooterLinks = (pathname: string) => ({
   product: [
-    { name: 'Features', href: '#features' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Safety', href: '#safety' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Features', href: pathname === '/' ? '#features' : '/#features' },
+    { name: 'How It Works', href: pathname === '/' ? '#how-it-works' : '/#how-it-works' },
+    { name: 'Safety', href: pathname === '/' ? '#safety' : '/#safety' },
+    { name: 'Pricing', href: pathname === '/' ? '#pricing' : '/#pricing' },
   ],
   support: [
     { name: 'Help Center', href: '/help' },
@@ -33,7 +35,7 @@ const footerLinks = {
     { name: 'Press', href: '/press' },
     { name: 'Blog', href: '/blog' },
   ],
-};
+});
 
 const socialLinks = [
   { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/ridepaddy' },
@@ -51,6 +53,8 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  const footerLinks = getFooterLinks(pathname);
   return (
     <footer className='bg-gray-900 text-white'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
@@ -64,7 +68,7 @@ export function Footer() {
               <span className='text-xl font-bold'>RidePaddy</span>
             </Link>
             <p className='text-gray-400 mb-6 max-w-sm'>
-              Nigeria's most trusted carpooling platform. Connect with verified
+              Nigeria&apos;s most trusted carpooling platform. Connect with verified
               drivers and passengers for safe, affordable rides.
             </p>
 

@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
     name: 'Adebayo Ogundimu',
     role: 'Software Engineer',
     location: 'Victoria Island, Lagos',
-    image: '/images/testimonials/adebayo.jpg',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
     rating: 5,
     content:
       "RidePaddy transformed my daily commute from Surulere to VI. I've made amazing friends and save over ₦50,000 monthly on transportation. The safety features give me complete peace of mind.",
@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
     name: 'Chiamaka Nwosu',
     role: 'Marketing Manager',
     location: 'Lekki, Lagos',
-    image: '/images/testimonials/chiamaka.jpg',
+    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face',
     rating: 5,
     content:
       'As a busy working mom, RidePaddy is a lifesaver. I can plan my trips in advance, the drivers are professional, and my kids love their regular "Uncle" drivers. It\'s like having an extended family.',
@@ -64,7 +64,7 @@ const testimonials: Testimonial[] = [
     name: 'Emeka Okafor',
     role: 'Business Owner & Driver',
     location: 'Ikeja, Lagos',
-    image: '/images/testimonials/emeka.jpg',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
     rating: 5,
     content:
       'I started as a passenger but became a driver when I saw the opportunity. Now I earn an extra ₦80K monthly while helping my community. RidePaddy created a real income stream for me.',
@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
     name: 'Dr. Fatima Hassan',
     role: 'Medical Doctor',
     location: 'Garki, Abuja',
-    image: '/images/testimonials/fatima.jpg',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face',
     rating: 5,
     content:
       "Working night shifts at the hospital, I need reliable, safe transportation. RidePaddy's verification process and emergency features are top-notch. I always feel secure, even during late hours.",
@@ -94,7 +94,7 @@ const testimonials: Testimonial[] = [
     name: 'Kemi Adebisi',
     role: 'University Student',
     location: 'Yaba, Lagos',
-    image: '/images/testimonials/kemi.jpg',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
     rating: 5,
     content:
       'As a student on a budget, RidePaddy saves me so much money. The student discount and affordable rides mean I can focus on my studies instead of worrying about transport costs.',
@@ -107,7 +107,7 @@ const testimonials: Testimonial[] = [
     name: 'Ibrahim Mohammed',
     role: 'Civil Servant',
     location: 'Maitama, Abuja',
-    image: '/images/testimonials/ibrahim.jpg',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
     rating: 5,
     content:
       "The carpooling community in Abuja is incredible. I've networked with people from different sectors and even found new business opportunities. RidePaddy is more than transportation.",

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { About } from '@/components/sections/about';
 import { Features } from '@/components/sections/features';
 import { HowItWorks } from '@/components/sections/how-it-works';
 import { Stats } from '@/components/sections/stats';
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <About />
         <Features />
         <HowItWorks />
         <Stats />

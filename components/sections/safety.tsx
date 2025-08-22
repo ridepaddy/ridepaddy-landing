@@ -176,8 +176,8 @@ export function Safety() {
             </h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed'>
               RidePaddy implements industry-leading safety measures to ensure
-              every trip is secure, monitored, and protected. Your safety isn't
-              just a feature—it's our foundation.
+              every trip is secure, monitored, and protected. Your safety isn&apos;t
+              just a feature—it&apos;s our foundation.
             </p>
           </div>
         </FadeIn>
@@ -282,22 +282,22 @@ export function Safety() {
 
                   {/* Live Trip Monitoring */}
                   <div className='space-y-4'>
-                    <div className='bg-green-50 rounded-xl p-4'>
+                    <div className='bg-emerald-50 border border-emerald-100 rounded-xl p-4'>
                       <div className='flex items-center space-x-3 mb-3'>
-                        <MapPin className='h-5 w-5 text-green-600' />
+                        <MapPin className='h-5 w-5 text-emerald-600' />
                         <span className='font-medium text-gray-900'>
                           Live Trip Monitoring
                         </span>
                       </div>
-                      <div className='text-sm text-gray-600'>
+                      <div className='text-sm text-emerald-700'>
                         Route: Surulere → Victoria Island
                       </div>
-                      <div className='text-sm text-gray-600'>
+                      <div className='text-sm text-emerald-700'>
                         ETA: 8:45 AM • 15 mins remaining
                       </div>
                     </div>
 
-                    <div className='bg-blue-50 rounded-xl p-4'>
+                    <div className='bg-blue-50 border border-blue-100 rounded-xl p-4'>
                       <div className='flex items-center space-x-3 mb-3'>
                         <Shield className='h-5 w-5 text-blue-600' />
                         <span className='font-medium text-gray-900'>
@@ -307,22 +307,22 @@ export function Safety() {
                       <div className='flex items-center space-x-2'>
                         <div className='w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full' />
                         <div>
-                          <div className='text-sm font-medium'>Adebayo O.</div>
-                          <div className='text-xs text-gray-500'>
+                          <div className='text-sm font-medium text-blue-900'>Adebayo O.</div>
+                          <div className='text-xs text-blue-600'>
                             4.9★ • 500+ trips
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className='bg-yellow-50 rounded-xl p-4'>
+                    <div className='bg-amber-50 border border-amber-100 rounded-xl p-4'>
                       <div className='flex items-center space-x-3 mb-3'>
-                        <Heart className='h-5 w-5 text-yellow-600' />
+                        <Heart className='h-5 w-5 text-amber-600' />
                         <span className='font-medium text-gray-900'>
                           Emergency Contacts
                         </span>
                       </div>
-                      <div className='text-sm text-gray-600'>
+                      <div className='text-sm text-amber-700'>
                         2 contacts notified • Trip shared
                       </div>
                     </div>
@@ -330,7 +330,7 @@ export function Safety() {
 
                   {/* Emergency Button */}
                   <Button
-                    className='w-full mt-6 bg-red-600 hover:bg-red-700 text-white'
+                    className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white shadow-lg hover:shadow-xl transition-all duration-200'
                     size='lg'>
                     <AlertTriangle className='h-5 w-5 mr-2' />
                     Emergency Alert
@@ -423,13 +423,20 @@ export function Safety() {
 
         {/* Safety Guarantee */}
         <FadeIn delay={0.8}>
-          <div className='text-center mt-16 bg-gradient-to-r from-primary to-primary-600 rounded-3xl p-12 text-white'>
-            <Shield className='h-16 w-16 mx-auto mb-6 opacity-90' />
+          <div className='text-center mt-16 bg-gradient-to-br from-primary via-secondary to-success rounded-3xl p-12 text-white shadow-2xl relative overflow-hidden'>
+            {/* Gradient overlay for depth */}
+            <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 rounded-3xl'></div>
+            {/* Decorative elements */}
+            <div className='absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl'></div>
+            <div className='absolute bottom-0 left-0 w-24 h-24 bg-success/20 rounded-full blur-xl'></div>
+            
+            <div className='relative z-10'>
+              <Shield className='h-16 w-16 mx-auto mb-6 opacity-90' />
             <h3 className='text-2xl md:text-3xl font-bold mb-4'>
               Our Safety Guarantee
             </h3>
             <p className='text-lg text-green-100 mb-8 max-w-2xl mx-auto leading-relaxed'>
-              If you ever feel unsafe during a RidePaddy trip, we'll immediately
+              If you ever feel unsafe during a RidePaddy trip, we&apos;ll immediately
               connect you with emergency services and cover any costs associated
               with getting you to safety.
             </p>
@@ -440,9 +447,10 @@ export function Safety() {
               <Button
                 size='lg'
                 variant='outline'
-                className='border-white text-white hover:bg-white hover:text-primary'>
+                className='border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary transition-all duration-200'>
                 Download App
               </Button>
+            </div>
             </div>
           </div>
         </FadeIn>
