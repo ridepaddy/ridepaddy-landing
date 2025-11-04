@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Users,
@@ -12,9 +12,9 @@ import {
   Leaf,
   Clock,
   Heart,
-  Award,
-  Zap,
-  Globe,
+  // Award,
+  // Zap,
+  // Globe,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -105,32 +105,32 @@ const additionalStats = [
   },
 ];
 
-const achievementStats = [
-  {
-    icon: Award,
-    title: "Safety Leader",
-    description: "99.8% incident-free trips",
-    color: "bg-yellow-100 text-yellow-800",
-  },
-  {
-    icon: TrendingUp,
-    title: "Fastest Growing",
-    description: "#1 carpooling app in Nigeria",
-    color: "bg-green-100 text-green-800",
-  },
-  {
-    icon: Globe,
-    title: "Community Impact",
-    description: "Featured in Nigerian tech news",
-    color: "bg-blue-100 text-blue-800",
-  },
-  {
-    icon: Zap,
-    title: "Innovation Award",
-    description: "Best transport solution 2024",
-    color: "bg-purple-100 text-purple-800",
-  },
-];
+// const achievementStats = [
+//   {
+//     icon: Award,
+//     title: "Safety Leader",
+//     description: "99.8% incident-free trips",
+//     color: "bg-yellow-100 text-yellow-800",
+//   },
+//   {
+//     icon: TrendingUp,
+//     title: "Fastest Growing",
+//     description: "#1 carpooling app in Nigeria",
+//     color: "bg-green-100 text-green-800",
+//   },
+//   {
+//     icon: Globe,
+//     title: "Community Impact",
+//     description: "Featured in Nigerian tech news",
+//     color: "bg-blue-100 text-blue-800",
+//   },
+//   {
+//     icon: Zap,
+//     title: "Innovation Award",
+//     description: "Best transport solution 2024",
+//     color: "bg-purple-100 text-purple-800",
+//   },
+// ];
 
 export function Stats() {
   return (
@@ -386,16 +386,16 @@ export function Stats() {
 }
 
 // Live counter component with realistic incremental updates
-function LiveCounter({ target }: Readonly<{ target: number }>) {
-  const [count, setCount] = useState(target);
+// function LiveCounter({ target }: Readonly<{ target: number }>) {
+//   const [count, setCount] = useState(target);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prev) => prev + Math.floor(Math.random() * 3) + 1);
-    }, 3000 + Math.random() * 2000);
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCount((prev) => prev + Math.floor(Math.random() * 3) + 1);
+//     }, 3000 + Math.random() * 2000);
 
-    return () => clearInterval(interval);
-  }, []);
+//     return () => clearInterval(interval);
+//   }, []);
 
-  return <span>{count.toLocaleString()}</span>;
-}
+//   return <span>{count.toLocaleString()}</span>;
+// }

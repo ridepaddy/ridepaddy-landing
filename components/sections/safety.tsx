@@ -10,7 +10,7 @@ import {
   Clock,
   Star,
   Lock,
-  Camera,
+  // Camera,
   FileCheck,
   Headphones,
   Heart,

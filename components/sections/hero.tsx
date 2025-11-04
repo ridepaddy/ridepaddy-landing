@@ -17,7 +17,7 @@ const stats = [
 ];
 
 export function Hero() {
-  const [isLive, setisLive] = useState(false);
+  const [isLive,] = useState(false);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Background Pattern */}

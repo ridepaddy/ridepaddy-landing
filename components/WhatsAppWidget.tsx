@@ -1,7 +1,7 @@
 "use client";
-
+//
 import React from "react";
-// @ts-ignore
+// @ts-expect-error/ban-ts-comment"
 import WhatsAppWidget from "react-whatsapp-chat-widget";
 
 import "react-whatsapp-chat-widget/index.css";

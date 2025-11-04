@@ -7,8 +7,8 @@ import {
   Eye,
   Heart,
   Users,
-  Award,
-  MapPin,
+  // Award,
+  // MapPin,
   Shield,
   Leaf,
   Globe,
@@ -58,40 +58,40 @@ const values = [
   },
 ];
 
-const milestones = [
-  {
-    id: "founding",
-    year: "2023",
-    title: "The Beginning",
-    description:
-      "RidePaddy was founded with a vision to transform transportation in Nigeria.",
-    stats: "Idea conceived",
-  },
-  {
-    id: "launch",
-    year: "Early 2024",
-    title: "First Launch",
-    description:
-      "Launched in Lagos with 100 beta users, focusing on safety and reliability.",
-    stats: "100+ Beta Users",
-  },
-  {
-    id: "growth",
-    year: "Mid 2024",
-    title: "Rapid Growth",
-    description:
-      "Expanded to 8 cities with advanced safety features and community building.",
-    stats: "50,000+ Active Users",
-  },
-  {
-    id: "future",
-    year: "2025+",
-    title: "Looking Forward",
-    description:
-      "Expanding nationwide with AI-powered matching and sustainable initiatives.",
-    stats: "Future Vision",
-  },
-];
+// const milestones = [
+//   {
+//     id: "founding",
+//     year: "2023",
+//     title: "The Beginning",
+//     description:
+//       "RidePaddy was founded with a vision to transform transportation in Nigeria.",
+//     stats: "Idea conceived",
+//   },
+//   {
+//     id: "launch",
+//     year: "Early 2024",
+//     title: "First Launch",
+//     description:
+//       "Launched in Lagos with 100 beta users, focusing on safety and reliability.",
+//     stats: "100+ Beta Users",
+//   },
+//   {
+//     id: "growth",
+//     year: "Mid 2024",
+//     title: "Rapid Growth",
+//     description:
+//       "Expanded to 8 cities with advanced safety features and community building.",
+//     stats: "50,000+ Active Users",
+//   },
+//   {
+//     id: "future",
+//     year: "2025+",
+//     title: "Looking Forward",
+//     description:
+//       "Expanding nationwide with AI-powered matching and sustainable initiatives.",
+//     stats: "Future Vision",
+//   },
+// ];
 
 const team = [
   {
@@ -126,32 +126,32 @@ const team = [
   },
 ];
 
-const achievements = [
-  {
-    icon: Award,
-    title: "Best Transportation Innovation",
-    description: "TechCrunch Disrupt Africa 2024",
-    year: "2024",
-  },
-  {
-    icon: Users,
-    title: "50,000+ Active Users",
-    description: "Fastest growing carpooling platform",
-    year: "2024",
-  },
-  {
-    icon: MapPin,
-    title: "8 Cities Coverage",
-    description: "Expanding across major Nigerian cities",
-    year: "2024",
-  },
-  {
-    icon: Leaf,
-    title: "1,200T CO₂ Reduced",
-    description: "Environmental impact milestone",
-    year: "2024",
-  },
-];
+// const achievements = [
+//   {
+//     icon: Award,
+//     title: "Best Transportation Innovation",
+//     description: "TechCrunch Disrupt Africa 2024",
+//     year: "2024",
+//   },
+//   {
+//     icon: Users,
+//     title: "50,000+ Active Users",
+//     description: "Fastest growing carpooling platform",
+//     year: "2024",
+//   },
+//   {
+//     icon: MapPin,
+//     title: "8 Cities Coverage",
+//     description: "Expanding across major Nigerian cities",
+//     year: "2024",
+//   },
+//   {
+//     icon: Leaf,
+//     title: "1,200T CO₂ Reduced",
+//     description: "Environmental impact milestone",
+//     year: "2024",
+//   },
+// ];
 
 export function About() {
   return (
