@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { toast } from "sonner";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import {
   // Mail,
   // User,
@@ -24,7 +24,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-// import { waitlistSchema, type WaitlistFormData } from "@/lib/validations";
+import { waitlistSchema, type WaitlistFormData } from "@/lib/validations";
 // import { CITIES, USER_TYPES } from "@/lib/constants";
 import { FadeIn } from "@/components/animations/fade-in";
 import { SlideIn } from "@/components/animations/slide-in";
@@ -40,86 +40,86 @@ interface WaitlistStats {
 }
 
 export function Waitlist() {
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [stats,] = useState<WaitlistStats>({
+  const [stats, setStats] = useState<WaitlistStats>({
     totalSignups: 12847,
     cities: ["Lagos", "Abuja", "Port Harcourt", "Kano"],
     userTypes: { drivers: 3251, passengers: 7892, both: 1704 },
   });
 
-  // const {
-  //   // register,
-  //   handleSubmit,
-  //   formState: { errors },
-  //   reset,
-  // } = useForm<WaitlistFormData>({
-  //   resolver: zodResolver(waitlistSchema),
-  // });
+  const {
+    // register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<WaitlistFormData>({
+    resolver: zodResolver(waitlistSchema),
+  });
 
-  // const onSubmit = async (data: WaitlistFormData) => {
-  //   setIsLoading(true);
+  const onSubmit = async (data: WaitlistFormData) => {
+    setIsLoading(true);
 
-  //   try {
-  //     const response = await fetch("/api/waitlist", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(data),
-  //     });
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-  //     const result = await response.json();
+      const result = await response.json();
 
-  //     if (!response.ok) {
-  //       throw new Error(result.error || "Something went wrong");
-  //     }
+      if (!response.ok) {
+        throw new Error(result.error || "Something went wrong");
+      }
 
-  //     setIsSuccess(true);
-  //     reset();
+      setIsSuccess(true);
+      reset();
 
-  //     setStats((prev) => ({
-  //       ...prev,
-  //       totalSignups: prev.totalSignups + 1,
-  //       userTypes: {
-  //         ...prev.userTypes,
-  //         [data.userType as keyof typeof prev.userTypes]:
-  //           prev.userTypes[data.userType as keyof typeof prev.userTypes] + 1,
-  //       },
-  //     }));
+      setStats((prev) => ({
+        ...prev,
+        totalSignups: prev.totalSignups + 1,
+        userTypes: {
+          ...prev.userTypes,
+          [data.userType as keyof typeof prev.userTypes]:
+            prev.userTypes[data.userType as keyof typeof prev.userTypes] + 1,
+        },
+      }));
 
-  //     // Success toast with Sonner
-  //     toast.success("Welcome to RidePaddy! 🎉", {
-  //       description: `You're #${result.data.position} on our waitlist. We'll notify you when we launch in your city.`,
-  //       duration: 6000,
-  //       action: {
-  //         label: "Share",
-  //         onClick: () => {
-  //           if (navigator.share) {
-  //             navigator
-  //               .share({
-  //                 title: "Join me on RidePaddy!",
-  //                 text: "I just joined the RidePaddy waitlist. Join me and let's find our ride buddies together!",
-  //                 url: window.location.href,
-  //               })
-  //               .catch(console.error);
-  //           }
-  //         },
-  //       },
-  //     });
-  //   } catch (error) {
-  //     // Error toast with Sonner
-  //     toast.error("Oops! Something went wrong", {
-  //       description:
-  //         error instanceof Error ? error.message : "Please try again later.",
-  //       duration: 5000,
-  //       action: {
-  //         label: "Retry",
-  //         onClick: () => void handleSubmit(onSubmit)(),
-  //       },
-  //     });
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+      // Success toast with Sonner
+      toast.success("Welcome to RidePaddy! 🎉", {
+        description: `You're #${result.data.position} on our waitlist. We'll notify you when we launch in your city.`,
+        duration: 6000,
+        action: {
+          label: "Share",
+          onClick: () => {
+            if (navigator.share) {
+              navigator
+                .share({
+                  title: "Join me on RidePaddy!",
+                  text: "I just joined the RidePaddy waitlist. Join me and let's find our ride buddies together!",
+                  url: window.location.href,
+                })
+                .catch(console.error);
+            }
+          },
+        },
+      });
+    } catch (error) {
+      // Error toast with Sonner
+      toast.error("Oops! Something went wrong", {
+        description:
+          error instanceof Error ? error.message : "Please try again later.",
+        duration: 5000,
+        action: {
+          label: "Retry",
+          onClick: () => void handleSubmit(onSubmit)(),
+        },
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section
