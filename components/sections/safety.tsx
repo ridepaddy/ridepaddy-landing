@@ -145,14 +145,14 @@ const verificationSteps = [
     description: 'Third-party verification of criminal and driving records',
     icon: UserCheck,
   },
+  // {
+  //   step: 3,
+  //   title: 'Vehicle Inspection',
+  //   description: 'Physical vehicle inspection and safety certification',
+  //   icon: Camera,
+  // },
   {
     step: 3,
-    title: 'Vehicle Inspection',
-    description: 'Physical vehicle inspection and safety certification',
-    icon: Camera,
-  },
-  {
-    step: 4,
     title: 'Ongoing Monitoring',
     description: 'Continuous monitoring and regular re-verification',
     icon: Clock,

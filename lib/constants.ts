@@ -18,7 +18,7 @@ export const APP_CONFIG = {
 
 export const CONTACT_INFO = {
   email: 'hello@ridepaddy.com',
-  phone: '+234 123 456 7890',
+  phone: '+234 8065235615',
   address: 'Lagos, Nigeria',
   supportEmail: 'support@ridepaddy.com',
 };
