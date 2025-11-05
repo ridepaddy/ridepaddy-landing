@@ -47,7 +47,7 @@ export function Waitlist() {
     cities: ["Lagos", "Abuja", "Port Harcourt", "Kano"],
     userTypes: { drivers: 3251, passengers: 7892, both: 1704 },
   });
-//
+
   const {
     // register,
     handleSubmit,
