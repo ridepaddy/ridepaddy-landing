@@ -38,7 +38,7 @@ interface WaitlistStats {
     both: number;
   };
 }
-
+///\
 export function Waitlist() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
