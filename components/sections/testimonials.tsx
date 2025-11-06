@@ -156,15 +156,15 @@ export function Testimonials() {
   };
 
   return (
-    <section id='testimonials' className='py-24 bg-white'>
+    <section id='testimonials' className='py-24 bg-background'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <FadeIn>
           <div className='text-center mb-16'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6'>
+            <h2 className='text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-6'>
               Real Stories from Real{' '}
               <span className='gradient-text block'>Paddies</span>
             </h2>
-            <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
+            <p className='text-lg font-body text-muted-foreground max-w-3xl mx-auto'>
               Discover how RidePaddy is transforming lives across Nigeria. From
               saving money to building friendships, our community shares their
               amazing experiences.
@@ -174,7 +174,7 @@ export function Testimonials() {
 
         {/* Stats Bar */}
         <FadeIn delay={0.2}>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 bg-gray-50 rounded-2xl p-8'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 bg-muted rounded-2xl p-8'>
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -182,10 +182,10 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className='text-center'>
-                <div className='text-2xl md:text-3xl font-bold text-primary mb-2'>
+                <div className='text-2xl md:text-3xl font-heading font-bold text-primary mb-2'>
                   {stat.value}
                 </div>
-                <div className='text-sm text-gray-600'>{stat.label}</div>
+                <div className='text-sm font-body text-muted-foreground'>{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -209,12 +209,12 @@ export function Testimonials() {
                       <div className='absolute inset-0 flex items-center justify-center'>
                         <Button
                           size='lg'
-                          className='rounded-full bg-white/90 text-primary hover:bg-white hover:scale-110 transition-all duration-300'>
+                          className='rounded-full bg-card/90 hover:bg-card hover:scale-110 transition-all duration-300'>
                           <Play className='h-6 w-6 ml-1' fill='currentColor' />
                         </Button>
                       </div>
                     )}
-                    <Badge className='absolute top-4 left-4 bg-green-500'>
+                    <Badge className='absolute top-4 left-4 bg-primary'>
                       Featured Story
                     </Badge>
                   </div>
@@ -223,7 +223,7 @@ export function Testimonials() {
                     {/* Quote */}
                     <div className='relative mb-6'>
                       <Quote className='absolute -top-2 -left-2 h-8 w-8 text-primary/20' />
-                      <p className='text-lg text-gray-700 leading-relaxed italic pl-6'>
+                      <p className='text-lg font-body text-foreground leading-relaxed italic pl-6'>
                         {featuredTestimonial.content}
                       </p>
                     </div>
@@ -232,7 +232,7 @@ export function Testimonials() {
                     <div className='flex items-start justify-between mb-6'>
                       <div>
                         <div className='flex items-center space-x-2 mb-2'>
-                          <h4 className='font-bold text-gray-900'>
+                          <h4 className='font-heading font-bold text-secondary'>
                             {featuredTestimonial.name}
                           </h4>
                           {featuredTestimonial.verified && (
@@ -241,10 +241,10 @@ export function Testimonials() {
                             </Badge>
                           )}
                         </div>
-                        <p className='text-gray-600 text-sm mb-1'>
+                        <p className='font-body text-muted-foreground text-sm mb-1'>
                           {featuredTestimonial.role}
                         </p>
-                        <p className='text-gray-500 text-sm'>
+                        <p className='font-body text-muted-foreground text-sm'>
                           {featuredTestimonial.location}
                         </p>
                       </div>
@@ -256,8 +256,8 @@ export function Testimonials() {
                             key={i}
                             className={`h-4 w-4 ${
                               i < featuredTestimonial.rating
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300'
+                                ? 'text-primary fill-current'
+                                : 'text-muted'
                             }`}
                           />
                         ))}
@@ -265,14 +265,14 @@ export function Testimonials() {
                     </div>
 
                     {/* Stats */}
-                    <div className='grid grid-cols-3 gap-4 pt-6 border-t border-gray-100'>
+                    <div className='grid grid-cols-3 gap-4 pt-6 border-t border-border'>
                       {Object.entries(featuredTestimonial.stats).map(
                         ([key, value]) => (
                           <div key={key} className='text-center'>
-                            <div className='font-bold text-primary'>
+                            <div className='font-heading font-bold text-primary'>
                               {value}
                             </div>
-                            <div className='text-xs text-gray-500 capitalize'>
+                            <div className='text-xs font-body text-muted-foreground capitalize'>
                               {key.replace(/([A-Z])/g, ' $1').toLowerCase()}
                             </div>
                           </div>
@@ -290,7 +290,7 @@ export function Testimonials() {
             <div className='relative'>
               {/* Carousel Header */}
               <div className='flex items-center justify-between mb-8'>
-                <h3 className='text-2xl font-bold text-gray-900'>
+                <h3 className='text-2xl font-heading font-bold text-secondary'>
                   More Happy Paddies
                 </h3>
                 <div className='flex items-center space-x-2'>
@@ -320,7 +320,7 @@ export function Testimonials() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 0.3 }}>
-                    <Card className='border-0 shadow-lg'>
+                    <Card className='border-0 shadow-lg hover-lift'>
                       <CardContent className='p-6'>
                         <div className='flex items-start space-x-4'>
                           <div className='relative'>
@@ -338,17 +338,17 @@ export function Testimonials() {
                               />
                             </div>
                             {otherTestimonials[currentIndex]?.verified && (
-                              <div className='absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white' />
+                              <div className='absolute -bottom-1 -right-1 w-4 h-4 bg-primary rounded-full border-2 border-card' />
                             )}
                           </div>
 
                           <div className='flex-1'>
                             <div className='flex items-center justify-between mb-2'>
                               <div>
-                                <h4 className='font-semibold text-gray-900'>
+                                <h4 className='font-heading font-semibold text-secondary'>
                                   {otherTestimonials[currentIndex]?.name}
                                 </h4>
-                                <p className='text-sm text-gray-500'>
+                                <p className='text-sm font-body text-muted-foreground'>
                                   {otherTestimonials[currentIndex]?.role}
                                 </p>
                               </div>
@@ -360,19 +360,19 @@ export function Testimonials() {
                                       i <
                                       (otherTestimonials[currentIndex]
                                         ?.rating || 0)
-                                        ? 'text-yellow-400 fill-current'
-                                        : 'text-gray-300'
+                                        ? 'text-primary fill-current'
+                                        : 'text-muted'
                                     }`}
                                   />
                                 ))}
                               </div>
                             </div>
 
-                            <p className='text-gray-700 text-sm leading-relaxed mb-3'>
+                            <p className='font-body text-foreground text-sm leading-relaxed mb-3'>
                               {otherTestimonials[currentIndex]?.content}
                             </p>
 
-                            <div className='flex items-center justify-between text-xs text-gray-500'>
+                            <div className='flex items-center justify-between text-xs font-body text-muted-foreground'>
                               <span>
                                 {otherTestimonials[currentIndex]?.location}
                               </span>
@@ -396,7 +396,7 @@ export function Testimonials() {
                   {otherTestimonials.slice(1, 3).map((testimonial) => (
                     <Card
                       key={testimonial.id}
-                      className='border border-gray-100 hover:shadow-md transition-shadow cursor-pointer'>
+                      className='border border-border hover:shadow-md transition-shadow cursor-pointer'>
                       <CardContent className='p-4'>
                         <div className='flex items-start space-x-3'>
                           <div className='w-10 h-10 rounded-full overflow-hidden flex-shrink-0'>
@@ -410,7 +410,7 @@ export function Testimonials() {
                           </div>
                           <div className='flex-1 min-w-0'>
                             <div className='flex items-center justify-between mb-1'>
-                              <h5 className='font-medium text-gray-900 text-sm truncate'>
+                              <h5 className='font-body font-medium text-secondary text-sm truncate'>
                                 {testimonial.name}
                               </h5>
                               <div className='flex items-center space-x-1'>
@@ -419,14 +419,14 @@ export function Testimonials() {
                                     key={i}
                                     className={`h-2.5 w-2.5 ${
                                       i < testimonial.rating
-                                        ? 'text-yellow-400 fill-current'
-                                        : 'text-gray-300'
+                                        ? 'text-primary fill-current'
+                                        : 'text-muted'
                                     }`}
                                   />
                                 ))}
                               </div>
                             </div>
-                            <p className='text-xs text-gray-600 line-clamp-2'>
+                            <p className='text-xs font-body text-muted-foreground line-clamp-2'>
                               {testimonial.content}
                             </p>
                           </div>
@@ -458,16 +458,16 @@ export function Testimonials() {
 
         {/* Call to Action */}
         <FadeIn delay={0.8}>
-          <div className='text-center mt-16 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-12'>
-            <h3 className='text-2xl md:text-3xl font-bold text-gray-900 mb-4'>
+          <div className='text-center mt-16 bg-gradient-to-r from-primary-20 to-secondary-20 rounded-3xl p-12'>
+            <h3 className='text-2xl md:text-3xl font-heading font-bold text-secondary mb-4'>
               Ready to Write Your Own Success Story?
             </h3>
-            <p className='text-lg text-gray-600 mb-8 max-w-2xl mx-auto'>
+            <p className='text-lg font-body text-muted-foreground mb-8 max-w-2xl mx-auto'>
               Join thousands of Nigerians who have transformed their daily
               commute into something special with RidePaddy.
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-              <Button size='lg' className='group'>
+              <Button size='lg' className='group font-body'>
                 Download App Now
                 <motion.div
                   className='ml-2'
@@ -476,7 +476,7 @@ export function Testimonials() {
                   →
                 </motion.div>
               </Button>
-              <Button variant='outline' size='lg'>
+              <Button variant='outline' size='lg' className='font-body'>
                 Read More Stories
               </Button>
             </div>

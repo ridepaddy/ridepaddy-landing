@@ -6,9 +6,12 @@
 @theme {
   --breakpoint-*: initial;
   --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1440px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -16,11 +19,19 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
+  /* Brand Primary - Bright Emerald Green #01CD81 */
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-60: hsl(var(--primary-60));
+  --color-primary-40: hsl(var(--primary-40));
+  --color-primary-20: hsl(var(--primary-20));
 
+  /* Brand Secondary - Dark Teal #143D47 */
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-60: hsl(var(--secondary-60));
+  --color-secondary-40: hsl(var(--secondary-40));
+  --color-secondary-20: hsl(var(--secondary-20));
 
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
@@ -43,8 +54,10 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --font-sans: var(--font-inter);
-  --font-inter: var(--font-inter);
+  /* Typography */
+  --font-sans: var(--font-montserrat);
+  --font-heading: var(--font-creato-display);
+  --font-body: var(--font-montserrat);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -92,84 +105,105 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 192 56% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 192 56% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 192 56% 20%;
 
-    /* Nature Green Primary - #2C5F41 converted to HSL */
-    --primary: 150 37% 27%;
-    --primary-foreground: 0 0% 98%;
+    /* Brand Primary - Bright Emerald Green #01CD81 (RGB: 1 205 129) */
+    --primary: 157 99% 40%;
+    --primary-foreground: 192 56% 18%; /* Dark Teal for better contrast (5.5:1) */
 
-    /* Sage Green Secondary - #7A9A8A converted to HSL */
-    --secondary: 150 12% 55%;
-    --secondary-foreground: 0 0% 98%;
+    /* Primary Tints */
+    --primary-60: 157 99% 60%;
+    --primary-40: 157 99% 75%;
+    --primary-20: 157 99% 90%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    /* Brand Secondary - Dark Teal #143D47 (RGB: 20 61 71) */
+    --secondary: 192 56% 18%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Success Green - #4A7C59 */
-    --success: 140 23% 39%;
-    --success-foreground: 0 0% 98%;
+    /* Secondary Tints */
+    --secondary-60: 192 40% 45%;
+    --secondary-40: 192 30% 65%;
+    --secondary-20: 192 25% 85%;
 
-    /* Warning - #B8860B */
-    --warning: 45 92% 38%;
-    --warning-foreground: 0 0% 98%;
+    --muted: 192 20% 95%;
+    --muted-foreground: 192 20% 40%;
+    --accent: 157 99% 40%;
+    --accent-foreground: 192 56% 18%; /* Dark Teal for better contrast */
 
-    /* Destructive Red - #8B2635 */
-    --destructive: 350 55% 35%;
-    --destructive-foreground: 0 0% 98%;
+    /* Success - Use primary brand color */
+    --success: 157 99% 40%;
+    --success-foreground: 192 56% 18%; /* Dark Teal for better contrast */
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 150 37% 27%;
-    --chart-1: 150 37% 27%;
-    --chart-2: 150 12% 55%;
-    --chart-3: 140 23% 39%;
-    --chart-4: 45 92% 38%;
-    --chart-5: 350 55% 35%;
+    /* Warning - Complementary amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 192 56% 18%; /* Dark Teal for better contrast */
+
+    /* Destructive Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 192 20% 90%;
+    --input: 192 20% 90%;
+    --ring: 157 99% 40%;
+    --chart-1: 157 99% 40%;
+    --chart-2: 192 56% 18%;
+    --chart-3: 157 99% 60%;
+    --chart-4: 192 40% 45%;
+    --chart-5: 38 92% 50%;
     --radius: 0.5rem;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 192 56% 8%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 192 56% 12%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 192 56% 12%;
     --popover-foreground: 0 0% 98%;
 
-    /* Lighter green for dark mode */
-    --primary: 150 25% 45%;
+    /* Brand Primary - Slightly brighter for dark mode */
+    --primary: 157 99% 45%;
     --primary-foreground: 0 0% 0%;
 
-    --secondary: 150 15% 65%;
-    --secondary-foreground: 0 0% 0%;
+    /* Primary Tints for dark mode */
+    --primary-60: 157 99% 60%;
+    --primary-40: 157 99% 75%;
+    --primary-20: 157 99% 90%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Brand Secondary - Lighter teal for dark mode */
+    --secondary: 192 40% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    --success: 140 30% 50%;
+    /* Secondary Tints for dark mode */
+    --secondary-60: 192 30% 60%;
+    --secondary-40: 192 25% 75%;
+    --secondary-20: 192 20% 90%;
+
+    --muted: 192 30% 20%;
+    --muted-foreground: 192 15% 70%;
+    --accent: 157 99% 45%;
+    --accent-foreground: 0 0% 0%;
+
+    --success: 157 99% 45%;
     --success-foreground: 0 0% 0%;
 
-    --warning: 45 100% 50%;
+    --warning: 38 92% 55%;
     --warning-foreground: 0 0% 0%;
 
-    --destructive: 350 75% 55%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 150 25% 45%;
-    --chart-1: 150 25% 45%;
-    --chart-2: 150 15% 65%;
-    --chart-3: 140 30% 50%;
-    --chart-4: 45 100% 50%;
-    --chart-5: 350 75% 55%;
+    --border: 192 30% 25%;
+    --input: 192 30% 25%;
+    --ring: 157 99% 45%;
+    --chart-1: 157 99% 45%;
+    --chart-2: 192 40% 45%;
+    --chart-3: 157 99% 60%;
+    --chart-4: 192 30% 60%;
+    --chart-5: 38 92% 55%;
   }
 }
 
@@ -177,12 +211,42 @@
   * {
     @apply border-border;
   }
+
+  html {
+    @apply overflow-x-hidden;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body overflow-x-hidden;
+    /* Center content on ultrawide screens */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Main content wrapper */
+  body > * {
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }
 
 @layer utilities {
+  /* Container utilities for large screens */
+  .container-responsive {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1920px; /* Maximum width for ultrawide screens */
+  }
+
+  .container-narrow {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1440px; /* Narrower container for better readability */
+  }
+
   .glass-effect {
     @apply bg-white/80 dark:bg-black/80 backdrop-blur-sm border-0 shadow-lg;
   }
@@ -191,12 +255,49 @@
     @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg;
   }
 
+  /* Brand Gradients - Emerald Green to Dark Teal */
+  .brand-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .brand-gradient-reverse {
+    @apply bg-gradient-to-r from-secondary to-primary;
+  }
+
+  .brand-gradient-radial {
+    background: radial-gradient(circle, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  /* Legacy aliases */
   .nature-gradient {
     @apply bg-gradient-to-r from-primary to-secondary;
   }
 
   .success-gradient {
-    @apply bg-gradient-to-r from-success to-primary;
+    @apply bg-gradient-to-r from-primary via-primary-60 to-primary-40;
+  }
+
+  /* Emerald accent utilities */
+  .emerald-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .teal-overlay {
+    @apply bg-secondary/10;
+  }
+
+  /* Typography utilities */
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
   }
 
   .animate-fade-in {
@@ -209,6 +310,57 @@
 
   .animate-pulse-soft {
     animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-sm {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-md {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  /* Responsive spacing */
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  .section-padding-sm {
+    @apply py-8 sm:py-10 md:py-12 lg:py-16;
+  }
+
+  /* Safe area for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

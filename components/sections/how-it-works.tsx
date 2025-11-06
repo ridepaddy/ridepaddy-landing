@@ -39,14 +39,14 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id='how-it-works' className='py-24 bg-white'>
+    <section id='how-it-works' className='py-24 bg-background'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <FadeIn>
           <div className='text-center mb-16'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6'>
+            <h2 className='text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-6'>
               How <span className='gradient-text'>RidePaddy</span> Works
             </h2>
-            <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
+            <p className='text-lg font-body text-muted-foreground max-w-3xl mx-auto'>
               Getting started with RidePaddy is simple. Follow these four easy
               steps to start your carpooling journey today.
             </p>
@@ -62,23 +62,23 @@ export function HowItWorks() {
                 <SlideIn key={step.title} direction='left' delay={index * 0.2}>
                   <div className='flex items-start space-x-4 group'>
                     <div className='flex-shrink-0'>
-                      <div className='w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300'>
+                      <div className='w-16 h-16 bg-primary-20 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300'>
                         <Icon className='h-8 w-8 text-primary group-hover:text-white' />
                       </div>
                     </div>
                     <div className='flex-1'>
                       <div className='flex items-center space-x-3 mb-3'>
-                        <span className='bg-primary text-white text-sm font-bold px-3 py-1 rounded-full'>
+                        <span className='bg-primary text-white text-sm font-heading font-bold px-3 py-1 rounded-full'>
                           {index + 1}
                         </span>
-                        <h3 className='text-xl font-bold text-gray-900'>
+                        <h3 className='text-xl font-heading font-bold text-secondary'>
                           {step.title}
                         </h3>
                       </div>
-                      <p className='text-gray-600 mb-2 font-medium'>
+                      <p className='font-body text-foreground mb-2 font-medium'>
                         {step.description}
                       </p>
-                      <p className='text-sm text-gray-500 leading-relaxed'>
+                      <p className='text-sm font-body text-muted-foreground leading-relaxed'>
                         {step.details}
                       </p>
                     </div>
@@ -93,7 +93,7 @@ export function HowItWorks() {
             <SlideIn direction='right' delay={0.4}>
               <div className='relative'>
                 {/* Background Circle */}
-                <div className='absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full transform rotate-6' />
+                <div className='absolute inset-0 bg-gradient-to-br from-primary-20 to-secondary-20 rounded-full transform rotate-6' />
 
                 {/* Phone Mockups */}
                 <div className='relative z-10 flex items-center justify-center'>
@@ -104,14 +104,14 @@ export function HowItWorks() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.8, delay: 0.6 }}
                       className='w-48 h-96 bg-black rounded-3xl p-2 shadow-2xl'>
-                      <div className='w-full h-full bg-white rounded-2xl overflow-hidden relative'>
+                      <div className='w-full h-full bg-card rounded-2xl overflow-hidden relative'>
                         <Image
                           src='/images/driver-app-mockup.png'
                           alt='Driver App Interface'
                           fill
                           className='object-cover'
                         />
-                        <div className='absolute top-4 left-4 bg-green-500 text-white text-xs px-2 py-1 rounded-full'>
+                        <div className='absolute top-4 left-4 bg-primary text-white text-xs font-body px-2 py-1 rounded-full'>
                           Driver
                         </div>
                       </div>
@@ -123,14 +123,14 @@ export function HowItWorks() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.8, delay: 0.8 }}
                       className='w-48 h-96 bg-black rounded-3xl p-2 shadow-2xl mt-8'>
-                      <div className='w-full h-full bg-white rounded-2xl overflow-hidden relative'>
+                      <div className='w-full h-full bg-card rounded-2xl overflow-hidden relative'>
                         <Image
                           src='/images/passenger-app-mockup.png'
                           alt='Passenger App Interface'
                           fill
                           className='object-cover'
                         />
-                        <div className='absolute top-4 left-4 bg-blue-500 text-white text-xs px-2 py-1 rounded-full'>
+                        <div className='absolute top-4 left-4 bg-secondary text-white text-xs font-body px-2 py-1 rounded-full'>
                           Passenger
                         </div>
                       </div>
@@ -147,10 +147,10 @@ export function HowItWorks() {
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
-                  className='absolute top-16 -right-8 bg-white p-3 rounded-xl shadow-lg'>
+                  className='absolute top-16 -right-8 bg-card p-3 rounded-xl shadow-lg'>
                   <div className='text-center'>
-                    <div className='text-2xl font-bold text-primary'>99.8%</div>
-                    <div className='text-xs text-gray-500'>Safety Rating</div>
+                    <div className='text-2xl font-heading font-bold text-primary'>99.8%</div>
+                    <div className='text-xs font-body text-muted-foreground'>Safety Rating</div>
                   </div>
                 </motion.div>
 
@@ -163,10 +163,10 @@ export function HowItWorks() {
                     ease: 'easeInOut',
                     delay: 1.5,
                   }}
-                  className='absolute bottom-16 -left-8 bg-white p-3 rounded-xl shadow-lg'>
+                  className='absolute bottom-16 -left-8 bg-card p-3 rounded-xl shadow-lg'>
                   <div className='text-center'>
-                    <div className='text-2xl font-bold text-primary'>50K+</div>
-                    <div className='text-xs text-gray-500'>Happy Users</div>
+                    <div className='text-2xl font-heading font-bold text-primary'>50K+</div>
+                    <div className='text-xs font-body text-muted-foreground'>Happy Users</div>
                   </div>
                 </motion.div>
               </div>

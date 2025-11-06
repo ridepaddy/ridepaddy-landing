@@ -1,14 +1,62 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import WhatsAppChat from "@/components/WhatsAppWidget";
+import { NetworkStatus } from "@/components/network-status";
 // import { Analytics } from '@/lib/analytics';
 
-const inter = Inter({
+// Primary Font - Creato Display
+const creatoDisplay = localFont({
+  src: [
+    {
+      path: "../public/fonts/CreatoDisplay-Thin.otf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/CreatoDisplay-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/CreatoDisplay-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/CreatoDisplay-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/CreatoDisplay-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/CreatoDisplay-ExtraBold.otf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/CreatoDisplay-Black.otf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-creato-display",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
+});
+
+// Secondary Font - Montserrat
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-montserrat",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -78,6 +126,28 @@ export const metadata: Metadata = {
   verification: {
     google: "verification-code-here",
   },
+  icons: {
+    icon: [
+      {
+        url: "/images/brand/Green-Logo-Icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    shortcut: "/images/brand/Green-Logo-Icon.svg",
+    apple: "/images/brand/Green-Logo-Icon.svg",
+  },
+  manifest: "/manifest.json",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#01CD81" },
+    { media: "(prefers-color-scheme: dark)", color: "#143D47" },
+  ],
 };
 
 export default function RootLayout({
@@ -86,8 +156,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={`${inter.className} antialiased`}>
+    <html lang="en" className={`${creatoDisplay.variable} ${montserrat.variable}`}>
+      <body className={`${montserrat.className} antialiased`}>
+        <NetworkStatus />
         {children}
         <WhatsAppChat />
         <Toaster
