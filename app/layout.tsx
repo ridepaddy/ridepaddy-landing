@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'verification-code-here',
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
   },
   icons: {
     icon: [

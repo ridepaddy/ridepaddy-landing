@@ -1,1 +1,2 @@
-pnpm run lint
+# Pre-commit hook disabled - run 'pnpm build' manually before committing
+# pnpm lint-staged

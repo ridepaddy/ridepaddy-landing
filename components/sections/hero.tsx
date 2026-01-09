@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SlideIn } from "../animations/slide-in";
 import { FadeIn } from "../animations/fade-in";
-import { useState } from "react";
 
 const stats = [
   { label: "Active Users", value: "50K+", icon: Users },
@@ -17,7 +16,7 @@ const stats = [
 ];
 
 export function Hero() {
-  const [isLive,] = useState(false);
+  const isLive = false;
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-20 via-white to-primary-20">
       {/* Background Pattern */}
