@@ -100,7 +100,11 @@ export function Waitlist() {
                   text: "I just joined the RidePaddy waitlist. Join me and let's find our ride buddies together!",
                   url: window.location.href,
                 })
-                .catch(console.error);
+                .catch((error) => {
+                  if (process.env.NODE_ENV === 'development') {
+                    console.error('Share failed:', error);
+                  }
+                });
             }
           },
         },

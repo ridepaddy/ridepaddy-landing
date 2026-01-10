@@ -5,7 +5,8 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import WhatsAppChat from '@/components/WhatsAppWidget';
 import { NetworkStatus } from '@/components/network-status';
-// import { Analytics } from '@/lib/analytics';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Primary Font - Creato Display
 const creatoDisplay = localFont({
@@ -178,7 +179,8 @@ export default function RootLayout({
             className: 'sonner-toast',
           }}
         />
-        {/* <Analytics /> */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
