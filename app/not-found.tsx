@@ -78,9 +78,9 @@ export default function NotFound() {
               Safety
             </Link>
             <Link
-              href='/#download'
+              href='/#waitlist'
               className='text-sm font-body text-muted-foreground hover:text-primary transition-colors duration-200'>
-              Download App
+              Join Waitlist
             </Link>
           </div>
         </div>

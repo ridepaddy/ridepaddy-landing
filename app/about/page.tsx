@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: '/about',
     images: [
       {
-        url: '/images/og-about.jpg',
+        url: '/images/Ride-Paddy-Brand.jpg',
         width: 1200,
         height: 630,
         alt: 'RidePaddy Team - Building the Future of Transportation in Nigeria',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'About RidePaddy - Our Story & Mission',
     description:
       'Meet the team behind Nigeria\'s most trusted carpooling platform and learn about our mission to transform transportation.',
-    images: ['/images/twitter-about.jpg'],
+    images: ['/images/Ride-Paddy-Brand.jpg'],
   },
   alternates: {
     canonical: '/about',

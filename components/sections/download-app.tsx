@@ -7,6 +7,7 @@ import { QrCode, Smartphone, Download, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/animations/fade-in';
 import { SlideIn } from '@/components/animations/slide-in';
+import { APP_STORE_LINKS } from '@/lib/constants';
 
 const APP_FEATURES = [
   'Real-time GPS tracking and safety features',
@@ -18,8 +19,8 @@ const APP_FEATURES = [
 const STATS = [
   {
     icon: Download,
-    value: '100K+',
-    label: 'Downloads',
+    value: 'Fast',
+    label: 'Setup',
     bgColor: 'bg-primary-20',
     iconColor: 'text-primary',
     position: 'top-8 -left-8',
@@ -27,8 +28,8 @@ const STATS = [
   },
   {
     icon: Smartphone,
-    value: '4.9★',
-    label: 'App Rating',
+    value: 'Ready',
+    label: 'For commute',
     bgColor: 'bg-secondary-20',
     iconColor: 'text-secondary',
     position: 'bottom-8 -left-4',
@@ -65,7 +66,7 @@ export function DownloadApp() {
             <FadeIn delay={0.4}>
               <div className='flex flex-col sm:flex-row gap-4 mb-12'>
                 <Link
-                  href='https://apps.apple.com/app/ridepaddy'
+                  href={APP_STORE_LINKS.ios}
                   className='block hover:scale-105 transition-transform duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg'
                   aria-label='Download RidePaddy on the App Store'>
                   <Image
@@ -78,7 +79,7 @@ export function DownloadApp() {
                   />
                 </Link>
                 <Link
-                  href='https://play.google.com/store/apps/details?id=com.ridepaddy'
+                  href={APP_STORE_LINKS.android}
                   className='block hover:scale-105 transition-transform duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg'
                   aria-label='Get RidePaddy on Google Play'>
                   <Image
@@ -114,16 +115,15 @@ export function DownloadApp() {
           <div className='relative'>
             <SlideIn direction='right' delay={0.3}>
               <div className='relative flex justify-center'>
-                {/* Main Phone */}
-                <div className='relative z-10'>
-                  <div className='w-80 h-96 bg-black rounded-3xl p-2 shadow-2xl'>
-                    <div className='w-full h-full bg-card rounded-2xl overflow-hidden relative'>
+                <div className='relative z-10 w-full max-w-[28rem]'>
+                  <div className='section-shell overflow-hidden rounded-[2rem] p-3 shadow-2xl'>
+                    <div className='relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-card'>
                       <Image
-                        src='/images/app-download-mockup.png'
-                        alt='RidePaddy app interface showing download screen with user-friendly design'
+                        src='/images/Splash.png'
+                        alt='RidePaddy splash screen'
                         fill
                         className='object-cover'
-                        sizes='(max-width: 768px) 100vw, 320px'
+                        sizes='(max-width: 768px) 100vw, 448px'
                       />
                     </div>
                   </div>
@@ -202,7 +202,7 @@ export function DownloadApp() {
             <div className='inline-flex items-center space-x-2 bg-secondary/10 rounded-full px-6 py-3 backdrop-blur-sm'>
               <ArrowRight className='h-5 w-5 text-secondary' aria-hidden='true' />
               <span className='font-body text-secondary font-medium'>
-                Join 50,000+ Happy Users Today
+                Be first to ride with RidePaddy
               </span>
             </div>
           </div>

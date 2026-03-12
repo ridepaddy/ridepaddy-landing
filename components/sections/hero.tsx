@@ -1,121 +1,150 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Play, Star, Users, Shield, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { SlideIn } from "../animations/slide-in";
-import { FadeIn } from "../animations/fade-in";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Users,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { FadeIn } from '../animations/fade-in';
+import { SlideIn } from '../animations/slide-in';
 
-const stats = [
-  { label: "Active Users", value: "50K+", icon: Users },
-  { label: "Safety Score", value: "99.8%", icon: Shield },
-  { label: "App Rating", value: "4.9★", icon: Star },
+const trustMetrics = [
+  { label: 'Profile checks and trust signals', value: 'Verified' },
+  { label: 'Simple route coordination', value: 'Smooth' },
+  { label: 'Built around familiar riders', value: 'Community' },
+];
+
+const highlights = [
+  'Verified drivers and riders',
+  'Designed for Nigerian routes',
+  'Save money without losing comfort',
 ];
 
 export function Hero() {
-  const isLive = false;
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-20 via-white to-primary-20">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 hero-pattern opacity-40" />
+    <section className='hero-mesh relative overflow-hidden px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pb-24 lg:pt-40'>
+      <div className='soft-grid absolute inset-0 opacity-35' />
+      <div className='absolute left-[-8rem] top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl' />
+      <div className='absolute bottom-10 right-[-6rem] h-72 w-72 rounded-full bg-secondary/10 blur-3xl' />
 
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="text-center lg:text-left">
-            <FadeIn delay={0.2}>
-              <Badge variant="secondary" className="mb-6 px-4 py-2">
-                <Zap className="h-4 w-4 mr-2" />
-                {isLive ? "Now Live in Lagos & Abuja" : "Coming soon"}
+      <div className='relative mx-auto max-w-7xl'>
+        <div className='grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]'>
+          <div>
+            <FadeIn>
+              <Badge
+                variant='secondary'
+                className='mb-6 rounded-full border border-white/70 bg-white/75 px-4 py-2 text-secondary shadow-sm backdrop-blur'>
+                <Sparkles className='mr-2 h-4 w-4' />
+                Safe, social commuting for modern Nigerian cities
               </Badge>
             </FadeIn>
 
-            <FadeIn delay={0.4}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-secondary leading-tight mb-6">
-                Find Your
-                <span className="brand-gradient bg-clip-text text-transparent block">Ride Buddy</span>
-                in Nigeria
+            <FadeIn delay={0.1}>
+              <h1 className='max-w-3xl text-5xl font-heading font-bold leading-[0.95] tracking-tight text-secondary md:text-6xl lg:text-7xl'>
+                Move smarter.
+                <span className='gradient-text block'>Find your ride paddy.</span>
               </h1>
             </FadeIn>
 
-            <FadeIn delay={0.6}>
-              <p className="text-lg md:text-xl text-muted-foreground font-body mb-8 max-w-2xl mx-auto lg:mx-0">
-                Connect with trusted drivers and passengers for safe, affordable
-                carpooling across Nigeria. Turn your daily commute into a shared
-                journey.
+            <FadeIn delay={0.2}>
+              <p className='mt-6 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl'>
+                RidePaddy makes commuting feel lighter: better matches, verified
+                profiles, cleaner navigation, and a more human way to get
+                across town.
               </p>
             </FadeIn>
 
-            <FadeIn delay={0.8}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Button size="lg" className="group" asChild>
-                  <Link href="#download">
-                    Download App
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <FadeIn delay={0.3}>
+              <div className='mt-8 flex flex-col gap-3 sm:flex-row'>
+                <Button size='lg' className='rounded-full px-7' asChild>
+                  <Link href='#waitlist'>
+                    Join the waitlist
+                    <ArrowRight className='h-4 w-4' />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="group">
-                  <Play className="mr-2 h-4 w-4" />
-                  Watch Demo
+                <Button
+                  variant='outline'
+                  size='lg'
+                  className='rounded-full border-secondary/15 bg-white/70 px-7 backdrop-blur'
+                  asChild>
+                  <Link href='#how-it-works'>See how it works</Link>
                 </Button>
               </div>
             </FadeIn>
 
-            {/* Stats */}
-            <FadeIn delay={1.0}>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-                {stats.map((stat) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div
-                      key={stat.label}
-                      className="flex items-center space-x-2"
-                    >
-                      <Icon className="h-5 w-5 text-primary" />
-                      <div>
-                        <div className="font-bold font-heading text-secondary">
-                          {stat.value}
-                        </div>
-                        <div className="text-sm font-body text-muted-foreground">
-                          {stat.label}
-                        </div>
-                      </div>
+            <FadeIn delay={0.4}>
+              <div className='mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
+                {highlights.map((item) => (
+                  <div
+                    key={item}
+                    className='inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm text-secondary shadow-sm backdrop-blur'>
+                    <CheckCircle2 className='h-4 w-4 text-primary' />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.5}>
+              <div className='mt-10 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3'>
+                {trustMetrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className='rounded-3xl border border-white/70 bg-white/72 p-5 shadow-[0_18px_50px_rgba(20,61,71,0.07)] backdrop-blur'>
+                    <div className='text-2xl font-heading font-bold text-secondary'>
+                      {metric.value}
                     </div>
-                  );
-                })}
+                    <div className='mt-1 text-sm text-muted-foreground'>
+                      {metric.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </FadeIn>
           </div>
 
-          {/* Right Column - Hero Image */}
-          <div className="relative">
-            <SlideIn direction="right" delay={0.6}>
-              <div className="relative">
-                {/* Floating Elements */}
+          <div className='relative'>
+            <SlideIn direction='right' delay={0.2}>
+              <div className='relative mx-auto max-w-[30rem]'>
+                <div className='section-shell p-4'>
+                  <div className='relative overflow-hidden rounded-[1.6rem] bg-secondary p-3'>
+                    <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.28),transparent_42%)]' />
+                    <div className='relative mx-auto max-w-[18rem] overflow-hidden rounded-[1.35rem] border border-white/10 shadow-2xl'>
+                      <Image
+                        src='/images/new-onboarding.png'
+                        alt='RidePaddy welcome screen in device frame'
+                        width={740}
+                        height={1486}
+                        className='h-auto w-full object-cover'
+                        priority
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <motion.div
                   initial={{ y: 0 }}
                   animate={{ y: [-10, 10, -10] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute -top-4 -left-4 bg-white p-3 rounded-2xl shadow-lg z-10 hover-lift"
-                >
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-primary-20 rounded-full flex items-center justify-center">
-                      <Shield className="h-4 w-4 text-primary" />
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className='absolute -left-4 top-8 rounded-3xl border border-white/80 bg-white/90 p-4 shadow-xl backdrop-blur'>
+                  <div className='flex items-start gap-3'>
+                    <div className='rounded-2xl bg-primary/15 p-3'>
+                      <ShieldCheck className='h-5 w-5 text-primary' />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold font-body text-secondary">
-                        Safe & Verified
+                      <div className='text-sm font-semibold text-secondary'>
+                        Verified and secure
                       </div>
-                      <div className="text-xs font-body text-muted-foreground">
-                        All drivers checked
+                      <div className='mt-1 text-xs leading-5 text-muted-foreground'>
+                        Profiles, routes, and ride preferences checked.
                       </div>
                     </div>
                   </div>
@@ -125,59 +154,32 @@ export function Hero() {
                   initial={{ y: 0 }}
                   animate={{ y: [10, -10, 10] }}
                   transition={{
-                    duration: 4,
+                    duration: 5,
                     repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 2,
+                    ease: 'easeInOut',
+                    delay: 1.2,
                   }}
-                  className="absolute -bottom-4 -right-4 bg-white p-3 rounded-2xl shadow-lg z-10 hover-lift"
-                >
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-secondary-20 rounded-full flex items-center justify-center">
-                      <Users className="h-4 w-4 text-secondary" />
+                  className='absolute -bottom-4 right-0 rounded-3xl border border-white/80 bg-white/92 p-4 shadow-xl backdrop-blur'>
+                  <div className='flex items-center gap-4'>
+                    <div className='rounded-2xl bg-secondary/10 p-3'>
+                      <Users className='h-5 w-5 text-secondary' />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold font-body text-secondary">
-                        Active Community
+                      <div className='flex items-center gap-1 text-secondary'>
+                        <Star className='h-4 w-4 fill-primary text-primary' />
+                        <span className='text-sm font-semibold'>Community-first rides</span>
                       </div>
-                      <div className="text-xs font-body text-muted-foreground">50K+ users</div>
+                      <div className='mt-1 text-xs text-muted-foreground'>
+                        Match with people on the same route and rhythm.
+                      </div>
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Main Phone Mockup */}
-                <div className="relative mx-auto w-80 h-96 bg-black rounded-3xl p-2">
-                  <div className="w-full h-full bg-white rounded-2xl overflow-hidden relative">
-                    <Image
-                      src="/images/hero-mockup.png"
-                      alt="RidePaddy App Interface"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                </div>
               </div>
             </SlideIn>
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-muted rounded-full flex justify-center"
-        >
-          <div className="w-1 h-3 bg-muted rounded-full mt-2" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
