@@ -1,3 +1,5 @@
+import { CONTACT_INFO, SOCIAL_LINKS, TEAM_MEMBERS } from '@/lib/constants';
+
 interface StructuredDataProps {
   data: Record<string, unknown>;
 }
@@ -18,20 +20,13 @@ export const organizationStructuredData = {
   "name": "RidePaddy",
   "description": "Nigeria's most trusted carpooling platform connecting verified drivers and passengers for safe, affordable rides.",
   "url": "https://ridepaddy.com",
-  "logo": "https://ridepaddy.com/images/logo.png",
+  "logo": "https://ridepaddy.com/images/brand/Green-Logo-Icon.svg",
   "foundingDate": "2023",
-  "founders": [
-    {
-      "@type": "Person",
-      "name": "Adunni Okafor",
-      "jobTitle": "Co-Founder & CEO"
-    },
-    {
-      "@type": "Person", 
-      "name": "Chike Emeka",
-      "jobTitle": "Co-Founder & CTO"
-    }
-  ],
+  "founders": TEAM_MEMBERS.slice(0, 2).map((member) => ({
+    "@type": "Person",
+    "name": member.name,
+    "jobTitle": member.role,
+  })),
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "Nigeria",
@@ -40,14 +35,14 @@ export const organizationStructuredData = {
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
-    "email": "hello@ridepaddy.com",
+    "email": CONTACT_INFO.email,
     "availableLanguage": ["English", "Hausa", "Yoruba", "Igbo"]
   },
   "sameAs": [
-    "https://facebook.com/ridepaddy",
-    "https://twitter.com/ridepaddy", 
-    "https://instagram.com/ridepaddy",
-    "https://linkedin.com/company/ridepaddy"
+    SOCIAL_LINKS.facebook,
+    SOCIAL_LINKS.twitter,
+    SOCIAL_LINKS.instagram,
+    SOCIAL_LINKS.linkedin
   ],
   "industry": "Transportation",
   "numberOfEmployees": "10-50",

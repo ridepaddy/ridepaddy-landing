@@ -3,15 +3,15 @@ import dynamic from 'next/dynamic';
 import { Header } from '@/components/layouts/header';
 import { Footer } from '@/components/layouts/footer';
 import { Hero } from '@/components/sections/hero';
-import { About } from '@/components/sections/about';
 import { Features } from '@/components/sections/features';
+import { FAQ } from '@/components/sections/faq';
+import { Team } from '@/components/sections/team';
+import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 
 // Lazy load below-the-fold sections for better performance
 const HowItWorks = dynamic(() => import('@/components/sections/how-it-works').then(mod => ({ default: mod.HowItWorks })), {
   loading: () => <div className="min-h-screen bg-gradient-to-br from-primary-20 via-white to-secondary-20 animate-pulse" />
 });
-
-const Stats = dynamic(() => import('@/components/sections/stats').then(mod => ({ default: mod.Stats })));
 
 const Safety = dynamic(() => import('@/components/sections/safety').then(mod => ({ default: mod.Safety })));
 
@@ -32,15 +32,16 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className='min-h-screen'>
+      <FAQStructuredData />
       <Header />
       <main>
         <Hero />
-        <About />
         <Features />
         <HowItWorks />
-        <Stats />
+        <Team />
         <Safety />
         <Testimonials />
+        <FAQ />
         <DownloadApp />
         <Waitlist />
       </main>

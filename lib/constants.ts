@@ -20,7 +20,7 @@ export const CONTACT_INFO = {
   email: 'hello@ridepaddy.com',
   phone: '+234 8065235615',
   address: 'Lagos, Nigeria',
-  supportEmail: 'support@ridepaddy.com',
+  supportEmail: 'hello@ridepaddy.com',
 };
 
 export const SOCIAL_LINKS = {
@@ -34,6 +34,29 @@ export const APP_STORE_LINKS = {
   ios: 'https://apps.apple.com/app/ridepaddy',
   android: 'https://play.google.com/store/apps/details?id=com.ridepaddy',
 };
+
+export const TEAM_MEMBERS = [
+  {
+    name: 'Maurice Ogbebor',
+    role: 'Co-Founder & CEO',
+    image: '/images/mauricePhoto.jpg',
+  },
+  {
+    name: 'Abdulrasheed Tijani',
+    role: 'Co-Founder & CTO',
+    image: '/images/rasheedPhoto.jpeg',
+  },
+  {
+    name: 'Elijah Ugwu',
+    role: 'Chief Operating Officer',
+    image: '/images/elijahPhoto.jpeg',
+  },
+  {
+    name: 'Oluwayomi Adekanye',
+    role: 'VP Engineering',
+    image: '/images/kanyePhoto.jpg',
+  },
+] as const;
 
 export const CITIES = [
   'Lagos',

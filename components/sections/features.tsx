@@ -2,148 +2,138 @@
 
 import { motion } from 'framer-motion';
 import {
-  Users,
-  Shield,
-  MapPin,
-  Clock,
-  Star,
-  Zap,
-  Heart,
+  Clock3,
   DollarSign,
+  HeartHandshake,
+  MapPinned,
+  ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/animations/fade-in';
-import { StaggerContainer } from '../animations/stagger-container';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
-const features = [
+const featureCards = [
   {
-    icon: Users,
-    title: 'Community First',
+    icon: ShieldCheck,
+    title: 'Verified by design',
     description:
-      'Build lasting relationships with your regular ride buddies in a trusted community.',
-    color: 'bg-secondary-20 text-secondary',
+      'Safer matching starts with identity checks, clear profiles, and trusted rider signals.',
+    accent: 'bg-primary/15 text-primary',
   },
   {
-    icon: Shield,
-    title: 'Safety Guaranteed',
+    icon: MapPinned,
+    title: 'Route-smart matching',
     description:
-      'Comprehensive verification, real-time tracking, and 24/7 safety support.',
-    color: 'bg-primary-20 text-primary',
-  },
-  {
-    icon: MapPin,
-    title: 'Smart Matching',
-    description:
-      'AI-powered route matching finds the perfect rides for your journey.',
-    color: 'bg-secondary-20 text-secondary',
-  },
-  {
-    icon: Clock,
-    title: 'Flexible Timing',
-    description:
-      'Schedule rides in advance or find instant matches for your commute.',
-    color: 'bg-primary-20 text-primary',
-  },
-  {
-    icon: Star,
-    title: 'Quality Assured',
-    description:
-      'Comprehensive rating system ensures great experiences for everyone.',
-    color: 'bg-secondary-20 text-secondary',
+      'Meet people already headed your way instead of juggling scattered transport options.',
+    accent: 'bg-secondary/10 text-secondary',
   },
   {
     icon: DollarSign,
-    title: 'Fair Pricing',
+    title: 'Commutes that cost less',
     description:
-      'Cost-sharing model that saves money for passengers and earns income for drivers.',
-    color: 'bg-primary-20 text-primary',
+      'Passengers spend less. Drivers offset fuel and routine city travel without friction.',
+    accent: 'bg-primary/15 text-primary',
   },
   {
-    icon: Zap,
-    title: 'Instant Booking',
+    icon: Clock3,
+    title: 'Built for everyday rhythm',
     description:
-      'Book rides in seconds with our streamlined, user-friendly interface.',
-    color: 'bg-secondary-20 text-secondary',
+      'Morning runs, office commutes, campus routes, and regular pick-up schedules all fit naturally.',
+    accent: 'bg-secondary/10 text-secondary',
   },
-  {
-    icon: Heart,
-    title: 'Nigerian Built',
-    description:
-      'Designed specifically for Nigerian roads, culture, and transportation needs.',
-    color: 'bg-primary-20 text-primary',
-  },
+];
+
+const valueProps = [
+  'Friendly route matching',
+  'Clear trip coordination',
+  'Community-first rider experience',
+  'Made for Nigerian urban mobility',
 ];
 
 export function Features() {
   return (
-    <section id='features' className='py-24 bg-muted'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <FadeIn>
-          <div className='text-center mb-16'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-secondary mb-6'>
-              Why Choose <span className='brand-gradient bg-clip-text text-transparent'>RidePaddy?</span>
-            </h2>
-            <p className='text-lg font-body text-muted-foreground max-w-3xl mx-auto'>
-              Experience the future of transportation in Nigeria with features
-              designed for safety, community, and convenience.
-            </p>
-          </div>
-        </FadeIn>
+    <section id='features' className='px-4 py-20 sm:px-6 lg:px-8'>
+      <div className='mx-auto max-w-7xl'>
+        <div className='section-shell p-8 sm:p-10 lg:p-14'>
+          <div className='absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.14),transparent_60%)] lg:block' />
 
-        <StaggerContainer>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className='group'>
-                  <Card className='h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover-lift'>
-                    <CardHeader className='text-center pb-2'>
-                      <div
-                        className={`w-16 h-16 rounded-2xl ${feature.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className='h-8 w-8' />
-                      </div>
-                      <CardTitle className='text-xl font-heading text-secondary mb-2'>
-                        {feature.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className='text-center pt-0'>
-                      <CardDescription className='font-body text-muted-foreground leading-relaxed'>
-                        {feature.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-        </StaggerContainer>
+          <div className='relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start'>
+            <div>
+              <FadeIn>
+                <Badge variant='secondary' className='mb-5 rounded-full px-4 py-2'>
+                  <Sparkles className='mr-2 h-4 w-4' />
+                  Why the experience feels different
+                </Badge>
+              </FadeIn>
 
-        {/* Call to Action */}
-        <FadeIn delay={0.8}>
-          <div className='text-center mt-16'>
-            <p className='text-lg font-body text-muted-foreground mb-6'>
-              Ready to experience the RidePaddy difference?
-            </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size='lg' className='font-body'>
-                Join Our Community
-              </Button>
-            </motion.div>
+              <FadeIn delay={0.1}>
+                <h2 className='section-title max-w-xl'>
+                  A cleaner, calmer way to move across the city.
+                </h2>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className='section-copy mt-5 max-w-xl'>
+                  RidePaddy is not just another booking flow. It is a more
+                  intentional commuting product built around familiarity,
+                  consistency, and trust.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.3}>
+                <div className='mt-8 space-y-3'>
+                  {valueProps.map((item) => (
+                    <div
+                      key={item}
+                      className='flex items-center gap-3 rounded-2xl border border-secondary/8 bg-background/75 px-4 py-3 text-sm text-secondary shadow-sm'>
+                      <HeartHandshake className='h-4 w-4 text-primary' />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.4}>
+                <div className='mt-8'>
+                  <Button className='rounded-full px-6' asChild>
+                    <a href='#waitlist'>Get early access</a>
+                  </Button>
+                </div>
+              </FadeIn>
+            </div>
+
+            <div className='grid gap-5 md:grid-cols-2'>
+              {featureCards.map((feature, index) => {
+                const Icon = feature.icon;
+
+                return (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    viewport={{ once: true, margin: '-10%' }}>
+                    <Card className='h-full rounded-[1.75rem] border-white/70 bg-white/80 shadow-[0_18px_50px_rgba(20,61,71,0.06)]'>
+                      <CardContent className='p-7'>
+                        <div className={`mb-5 inline-flex rounded-2xl p-3 ${feature.accent}`}>
+                          <Icon className='h-6 w-6' />
+                        </div>
+                        <h3 className='text-xl font-heading font-semibold text-secondary'>
+                          {feature.title}
+                        </h3>
+                        <p className='mt-3 text-sm leading-7 text-muted-foreground'>
+                          {feature.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

@@ -5,60 +5,45 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-import {
-  // Mail,
-  // User,
-  // Phone,
-  // MapPin,
-  Users,
-  CheckCircle,
-  // Loader2,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-// import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { waitlistSchema, type WaitlistFormData } from '@/lib/validations';
-// import { CITIES, USER_TYPES } from "@/lib/constants";
+import { ArrowUpRight, Check, Loader2, MapPinned, Users } from 'lucide-react';
 import { FadeIn } from '@/components/animations/fade-in';
-import { SlideIn } from '@/components/animations/slide-in';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { waitlistSchema, type WaitlistFormData } from '@/lib/validations';
 
-interface WaitlistStats {
-  totalSignups: number;
-  cities: string[];
-  userTypes: {
-    drivers: number;
-    passengers: number;
-    both: number;
-  };
-}
+const launchCities = ['Lagos', 'Abuja', 'Port Harcourt', 'Ibadan'];
+const benefits = [
+  'Priority access before public launch',
+  'Launch updates for your city',
+  'Early community perks and first-ride offers',
+];
 
 export function Waitlist() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [stats, setStats] = useState<WaitlistStats>({
-    totalSignups: 12847,
-    cities: ['Lagos', 'Abuja', 'Port Harcourt', 'Kano'],
-    userTypes: { drivers: 3251, passengers: 7892, both: 1704 },
-  });
+  const [position, setPosition] = useState<number | null>(null);
 
   const {
-    // register,
+    register,
     handleSubmit,
-    formState: {},
     reset,
+    formState: { errors },
   } = useForm<WaitlistFormData>({
     resolver: zodResolver(waitlistSchema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+      city: '',
+      userType: 'passenger',
+      referralCode: '',
+    },
   });
 
   const onSubmit = async (data: WaitlistFormData) => {
-    setIsLoading(true);
+    setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/waitlist', {
@@ -70,322 +55,256 @@ export function Waitlist() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Something went wrong');
+        throw new Error(result.error || 'Unable to join the waitlist.');
       }
 
+      setPosition(result.data?.position ?? null);
       setIsSuccess(true);
       reset();
 
-      setStats((prev) => ({
-        ...prev,
-        totalSignups: prev.totalSignups + 1,
-        userTypes: {
-          ...prev.userTypes,
-          [data.userType as keyof typeof prev.userTypes]:
-            prev.userTypes[data.userType as keyof typeof prev.userTypes] + 1,
-        },
-      }));
-
-      // Success toast with Sonner
-      toast.success('Welcome to RidePaddy! 🎉', {
-        description: `You're #${result.data.position} on our waitlist. We'll notify you when we launch in your city.`,
-        duration: 6000,
-        action: {
-          label: 'Share',
-          onClick: () => {
-            if (navigator.share) {
-              navigator
-                .share({
-                  title: 'Join me on RidePaddy!',
-                  text: "I just joined the RidePaddy waitlist. Join me and let's find our ride buddies together!",
-                  url: window.location.href,
-                })
-                .catch((error) => {
-                  if (process.env.NODE_ENV === 'development') {
-                    console.error('Share failed:', error);
-                  }
-                });
-            }
-          },
-        },
+      toast.success('You are on the waitlist', {
+        description:
+          result.data?.position != null
+            ? `You are number ${result.data.position} in the current queue.`
+            : 'We will notify you when RidePaddy launches in your city.',
       });
     } catch (error) {
-      // Error toast with Sonner
-      toast.error('Oops! Something went wrong', {
+      toast.error('Waitlist submission failed', {
         description:
           error instanceof Error ? error.message : 'Please try again later.',
-        duration: 5000,
-        action: {
-          label: 'Retry',
-          onClick: () => void handleSubmit(onSubmit)(),
-        },
       });
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
     <section
       id='waitlist'
-      className='py-24 bg-gradient-to-br from-primary-20 via-background to-secondary-20'
+      className='px-4 py-20 sm:px-6 lg:px-8'
       aria-labelledby='waitlist-heading'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='grid lg:grid-cols-2 gap-16 items-center'>
-          {/* Left Column - Form */}
-          <div>
-            <FadeIn>
-              <div className='mb-8'>
-                <Badge variant='secondary' className='mb-4 px-4 py-2'>
-                  <Users className='h-4 w-4 mr-2' />
-                  Join {stats.totalSignups.toLocaleString()}+ Users
+      <div className='mx-auto max-w-7xl'>
+        <div className='section-shell overflow-hidden bg-[linear-gradient(135deg,rgba(1,205,129,0.10),rgba(20,61,71,0.02))] p-8 sm:p-10 lg:p-14'>
+          <div className='absolute left-0 top-0 h-56 w-56 rounded-full bg-primary/15 blur-3xl' />
+          <div className='absolute bottom-0 right-0 h-72 w-72 rounded-full bg-secondary/10 blur-3xl' />
+
+          <div className='relative grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start'>
+            <div>
+              <FadeIn>
+                <Badge variant='secondary' className='mb-5 rounded-full px-4 py-2'>
+                  <Users className='mr-2 h-4 w-4' />
+                  Join the early-access list
                 </Badge>
-                <h2
-                  id='waitlist-heading'
-                  className='text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-6'>
-                  Be the First to{' '}
-                  <span className='gradient-text block'>Find Your Paddy</span>
+              </FadeIn>
+
+              <FadeIn delay={0.1}>
+                <h2 id='waitlist-heading' className='section-title max-w-xl'>
+                  Get first access when RidePaddy opens your route.
                 </h2>
-                <p className='text-lg font-body text-muted-foreground leading-relaxed'>
-                  Join our exclusive waitlist and get early access to RidePaddy
-                  when we launch in your city. Plus, get a special discount on
-                  your first 5 rides!
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className='section-copy mt-5 max-w-xl'>
+                  We are opening city by city. Join the waitlist to hear when
+                  your area goes live and to get early-launch benefits before the
+                  wider rollout.
                 </p>
-              </div>
-            </FadeIn>
+              </FadeIn>
 
-            <SlideIn direction='left' delay={0.2}>
-              <Card className='shadow-xl border-0 hover-lift'>
-                <CardHeader className='pb-6'>
-                  <CardTitle className='text-xl font-heading'>
-                    Join the Waitlist
-                  </CardTitle>
-                  <CardDescription className='font-body'>
-                    Get notified when RidePaddy launches in your city and
-                    receive exclusive early access.
-                  </CardDescription>
-                </CardHeader>
+              <FadeIn delay={0.3}>
+                <div className='mt-8 space-y-3'>
+                  {benefits.map((benefit) => (
+                    <div key={benefit} className='flex items-center gap-3 text-secondary'>
+                      <div className='rounded-full bg-primary/15 p-2 text-primary'>
+                        <Check className='h-4 w-4' />
+                      </div>
+                      <span className='text-sm sm:text-base'>{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
 
-                <CardContent>
+              <FadeIn delay={0.35}>
+                <div className='mt-8 rounded-[1.6rem] bg-secondary px-5 py-6 text-white'>
+                  <div className='text-sm uppercase tracking-[0.2em] text-white/60'>
+                    Launch cities
+                  </div>
+                  <div className='mt-4 grid grid-cols-2 gap-3'>
+                    {launchCities.map((city) => (
+                      <div
+                        key={city}
+                        className='rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm font-medium'>
+                        {city}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            <FadeIn delay={0.25}>
+              <Card className='rounded-[2rem] border-white/80 bg-white/90 shadow-[0_24px_60px_rgba(20,61,71,0.08)]'>
+                <CardContent className='p-7 sm:p-8'>
+                  <div className='mb-6 flex items-center gap-3 text-secondary'>
+                    <div className='rounded-2xl bg-secondary/10 p-3'>
+                      <MapPinned className='h-5 w-5' />
+                    </div>
+                    <div>
+                      <div className='text-lg font-heading font-semibold'>
+                        Join the waitlist
+                      </div>
+                      <div className='text-sm text-muted-foreground'>
+                        Submit your details once. We will handle the rest.
+                      </div>
+                    </div>
+                  </div>
+
                   {isSuccess ? (
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
+                      initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className='text-center py-8'>
-                      <div className='w-16 h-16 bg-primary-20 rounded-full flex items-center justify-center mx-auto mb-4'>
-                        <CheckCircle className='h-8 w-8 text-primary' />
+                      className='rounded-[1.6rem] bg-secondary px-6 py-8 text-center text-white'>
+                      <div className='mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10'>
+                        <Check className='h-5 w-5' />
                       </div>
-                      <h3 className='text-xl font-heading font-semibold text-secondary mb-2'>
-                        You&apos;re on the list! 🎉
+                      <h3 className='text-2xl font-heading font-semibold'>
+                        You&apos;re in
                       </h3>
-                      <p className='font-body text-muted-foreground mb-6'>
-                        We&apos;ll send you an email when RidePaddy launches in
-                        your city.
+                      <p className='mt-3 text-sm leading-7 text-white/75'>
+                        {position != null
+                          ? `Your current waitlist position is ${position}. We will reach out when your route is ready.`
+                          : 'We will reach out when your route is ready.'}
                       </p>
                       <Button
                         variant='outline'
-                        onClick={() => setIsSuccess(false)}
-                        className='w-full font-body'>
-                        Add Another Person
+                        className='mt-6 rounded-full border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white'
+                        onClick={() => setIsSuccess(false)}>
+                        Add another person
                       </Button>
                     </motion.div>
                   ) : (
-                    <form
-                      onSubmit={handleSubmit(onSubmit)}
-                      className='space-y-6'>
-                      <Button
-                        disabled={isLoading}
-                        asChild
-                        className='w-full cursor-pointer font-body'
-                        size='lg'>
-                        <a
-                          href={
-                            process.env.NEXT_PUBLIC_WAITLIST_FORM_URL ||
-                            'https://forms.gle/zxw5QZa1cNwbLyup6'
-                          }
-                          target='_blank'
-                          rel='noopener noreferrer'>
-                          Join the Waitlist
-                        </a>
-                      </Button>
+                    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+                      <div>
+                        <Input
+                          {...register('fullName')}
+                          placeholder='Full name'
+                          className='h-12 rounded-2xl bg-white'
+                          aria-invalid={Boolean(errors.fullName)}
+                        />
+                        {errors.fullName && (
+                          <p className='mt-1 text-xs text-destructive'>
+                            {errors.fullName.message}
+                          </p>
+                        )}
+                      </div>
 
-                      <p className='text-xs font-body text-muted-foreground text-center'>
-                        {'By joining, you agree to our '}
-                        <a
-                          href='/terms'
-                          className='text-primary hover:underline'
-                          rel='noopener noreferrer'>
-                          Terms of Service
-                        </a>
-                        {' and '}
-                        <a
-                          href='/privacy'
-                          className='text-primary hover:underline'
-                          rel='noopener noreferrer'>
-                          Privacy Policy
-                        </a>
-                        {'.'}
+                      <div className='grid gap-4 sm:grid-cols-2'>
+                        <div>
+                          <Input
+                            {...register('email')}
+                            type='email'
+                            placeholder='Email address'
+                            className='h-12 rounded-2xl bg-white'
+                            aria-invalid={Boolean(errors.email)}
+                          />
+                          {errors.email && (
+                            <p className='mt-1 text-xs text-destructive'>
+                              {errors.email.message}
+                            </p>
+                          )}
+                        </div>
+
+                        <div>
+                          <Input
+                            {...register('phoneNumber')}
+                            placeholder='Phone number'
+                            className='h-12 rounded-2xl bg-white'
+                            aria-invalid={Boolean(errors.phoneNumber)}
+                          />
+                          {errors.phoneNumber && (
+                            <p className='mt-1 text-xs text-destructive'>
+                              {errors.phoneNumber.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className='grid gap-4 sm:grid-cols-2'>
+                        <div>
+                          <Input
+                            {...register('city')}
+                            placeholder='City'
+                            className='h-12 rounded-2xl bg-white'
+                            aria-invalid={Boolean(errors.city)}
+                          />
+                          {errors.city && (
+                            <p className='mt-1 text-xs text-destructive'>
+                              {errors.city.message}
+                            </p>
+                          )}
+                        </div>
+
+                        <div>
+                          <select
+                            {...register('userType')}
+                            className='flex h-12 w-full rounded-2xl border border-input bg-white px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50'
+                            aria-invalid={Boolean(errors.userType)}>
+                            <option value='passenger'>Passenger</option>
+                            <option value='driver'>Driver</option>
+                            <option value='both'>Both</option>
+                          </select>
+                          {errors.userType && (
+                            <p className='mt-1 text-xs text-destructive'>
+                              {errors.userType.message}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div>
+                        <Input
+                          {...register('referralCode')}
+                          placeholder='Referral code (optional)'
+                          className='h-12 rounded-2xl bg-white'
+                        />
+                      </div>
+
+                      <div className='flex flex-col gap-3 sm:flex-row'>
+                        <Button
+                          className='w-full rounded-full sm:flex-1'
+                          size='lg'
+                          type='submit'
+                          disabled={isSubmitting}>
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className='h-4 w-4 animate-spin' />
+                              Submitting
+                            </>
+                          ) : (
+                            <>
+                              Join the waitlist
+                              <ArrowUpRight className='h-4 w-4' />
+                            </>
+                          )}
+                        </Button>
+                        <Button
+                          variant='outline'
+                          className='w-full rounded-full border-secondary/15 bg-white sm:flex-1'
+                          size='lg'
+                          asChild>
+                          <a href='#download'>See app preview</a>
+                        </Button>
+                      </div>
+
+                      <p className='text-center text-xs leading-6 text-muted-foreground'>
+                        Your details are used only for launch updates and
+                        early-access communication.
                       </p>
                     </form>
                   )}
                 </CardContent>
               </Card>
-            </SlideIn>
-          </div>
-
-          {/* Right Column - Stats & Benefits */}
-          <div className='space-y-8'>
-            <SlideIn direction='right' delay={0.4}>
-              <Card className='border-0 shadow-lg brand-gradient text-white hover-lift'>
-                <CardContent className='p-8'>
-                  <h3 className='text-xl font-heading font-semibold mb-6'>
-                    Join the Growing Community
-                  </h3>
-
-                  <div className='grid grid-cols-2 gap-6 mb-6'>
-                    <div className='text-center'>
-                      <div className='text-3xl font-heading font-bold mb-1'>
-                        {stats.totalSignups.toLocaleString()}+
-                      </div>
-                      <div className='font-body text-white/90 text-sm'>
-                        People Waiting
-                      </div>
-                    </div>
-                    <div className='text-center'>
-                      <div className='text-3xl font-heading font-bold mb-1'>
-                        {stats.cities.length}
-                      </div>
-                      <div className='font-body text-white/90 text-sm'>
-                        Cities Ready
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='space-y-3'>
-                    <div className='flex justify-between items-center'>
-                      <span className='font-body text-white/90'>Drivers</span>
-                      <span className='font-body font-semibold'>
-                        {stats.userTypes.drivers.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className='flex justify-between items-center'>
-                      <span className='font-body text-white/90'>
-                        Passengers
-                      </span>
-                      <span className='font-body font-semibold'>
-                        {stats.userTypes.passengers.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className='flex justify-between items-center'>
-                      <span className='font-body text-white/90'>Both</span>
-                      <span className='font-body font-semibold'>
-                        {stats.userTypes.both.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </SlideIn>
-
-            <SlideIn direction='right' delay={0.6}>
-              <Card className='border-0 shadow-lg hover-lift'>
-                <CardContent className='p-8'>
-                  <h3 className='text-xl font-heading font-semibold mb-6'>
-                    Early Access Benefits
-                  </h3>
-
-                  <div className='space-y-4'>
-                    <div className='flex items-start space-x-3'>
-                      <div className='w-6 h-6 bg-primary-20 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                        <CheckCircle className='h-3 w-3 text-primary' />
-                      </div>
-                      <div>
-                        <div className='font-body font-semibold text-secondary'>
-                          50% Off First 5 Rides
-                        </div>
-                        <div className='text-sm font-body text-muted-foreground'>
-                          Exclusive discount for early adopters
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className='flex items-start space-x-3'>
-                      <div className='w-6 h-6 bg-primary-20 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                        <CheckCircle className='h-3 w-3 text-primary' />
-                      </div>
-                      <div>
-                        <div className='font-body font-semibold text-secondary'>
-                          Priority Support
-                        </div>
-                        <div className='text-sm font-body text-muted-foreground'>
-                          Get help faster with dedicated support
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className='flex items-start space-x-3'>
-                      <div className='w-6 h-6 bg-primary-20 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                        <CheckCircle className='h-3 w-3 text-primary' />
-                      </div>
-                      <div>
-                        <div className='font-body font-semibold text-secondary'>
-                          Exclusive Events
-                        </div>
-                        <div className='text-sm font-body text-muted-foreground'>
-                          Join community meetups and networking events
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className='flex items-start space-x-3'>
-                      <div className='w-6 h-6 bg-primary-20 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                        <CheckCircle className='h-3 w-3 text-primary' />
-                      </div>
-                      <div>
-                        <div className='font-body font-semibold text-secondary'>
-                          Beta Features
-                        </div>
-                        <div className='text-sm font-body text-muted-foreground'>
-                          Access new features before anyone else
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </SlideIn>
-
-            <SlideIn direction='right' delay={0.8}>
-              <div className='bg-muted rounded-2xl p-6'>
-                <div className='flex items-center space-x-4 mb-4'>
-                  <div className='flex -space-x-2'>
-                    {[1, 2, 3, 4].map((i) => (
-                      <div
-                        key={i}
-                        className='w-8 h-8 brand-gradient rounded-full border-2 border-card flex items-center justify-center'>
-                        <span className='text-xs font-heading font-semibold text-white'>
-                          {String.fromCharCode(64 + i)}
-                        </span>
-                      </div>
-                    ))}
-                    <div className='w-8 h-8 bg-muted-foreground rounded-full border-2 border-card flex items-center justify-center'>
-                      <span className='text-xs font-heading font-semibold text-background'>
-                        +
-                      </span>
-                    </div>
-                  </div>
-                  <div className='text-sm font-body text-muted-foreground'>
-                    <span className='font-semibold'>1,247</span> people joined
-                    this week
-                  </div>
-                </div>
-                <p className='text-sm font-body text-muted-foreground italic'>
-                  &quot;Can&apos;t wait for RidePaddy to launch! This is exactly
-                  what Lagos needs.&quot;{' '}
-                  <span className='font-semibold'>- Adebayo O.</span>
-                </p>
-              </div>
-            </SlideIn>
+            </FadeIn>
           </div>
         </div>
       </div>

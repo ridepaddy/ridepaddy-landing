@@ -34,7 +34,7 @@ const safetyFeatures = [
       'Vehicle registration check',
       'Real-time photo verification',
     ],
-    stat: '99.8% verified drivers',
+    stat: 'Identity-checked onboarding',
     color: 'bg-primary-20 text-primary',
   },
   {
@@ -76,7 +76,7 @@ const safetyFeatures = [
       'Safety score calculation',
       'Community moderation',
     ],
-    stat: '4.9/5 avg rating',
+    stat: 'Transparent feedback',
     color: 'bg-secondary-20 text-secondary',
   },
   {
@@ -111,24 +111,24 @@ const safetyFeatures = [
 
 const safetyStats = [
   {
-    label: 'Safety Incidents',
-    value: '0.02%',
-    description: 'Lowest in the industry',
+    label: 'Driver screening',
+    value: 'Multi-step',
+    description: 'Identity and document checks',
   },
   {
-    label: 'Response Time',
-    value: '<30s',
-    description: 'Emergency response average',
+    label: 'Support coverage',
+    value: 'Always-on',
+    description: 'Safety support when needed',
   },
   {
-    label: 'Verified Drivers',
-    value: '99.8%',
-    description: 'Comprehensive background checks',
+    label: 'Trip visibility',
+    value: 'Live',
+    description: 'Route sharing and monitoring',
   },
   {
-    label: 'User Satisfaction',
-    value: '4.9/5',
-    description: 'Safety rating from users',
+    label: 'Privacy controls',
+    value: 'Protected',
+    description: 'Messages and contact details secured',
   },
 ];
 

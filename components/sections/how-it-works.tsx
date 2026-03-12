@@ -2,177 +2,175 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { UserPlus, Search, MessageCircle, Car } from 'lucide-react';
+import { CarFront, Map, MessageSquareText, UserRoundPlus } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { FadeIn } from '@/components/animations/fade-in';
-import { SlideIn } from '@/components/animations/slide-in';
 
 const steps = [
   {
-    icon: UserPlus,
-    title: 'Sign Up',
-    description: 'Create your account and complete verification in minutes',
-    details:
-      'Quick registration with phone verification and optional document upload for enhanced trust.',
+    icon: UserRoundPlus,
+    title: 'Create your profile',
+    description:
+      'Tell RidePaddy where you commute, how often you move, and what kind of ride you prefer.',
   },
   {
-    icon: Search,
-    title: 'Find Rides',
-    description: 'Search for rides or post your own trip',
-    details:
-      'Smart matching algorithm finds compatible rides based on your route, timing, and preferences.',
+    icon: Map,
+    title: 'Match on route',
+    description:
+      'The app surfaces drivers and riders already going your way, with clearer context and timing.',
   },
   {
-    icon: MessageCircle,
-    title: 'Connect',
-    description: 'Message your ride buddy and coordinate pickup',
-    details:
-      'Safe in-app messaging to coordinate pickup details and get to know your travel companion.',
+    icon: MessageSquareText,
+    title: 'Confirm details',
+    description:
+      'Coordinate pickup, timing, and comfort preferences before the trip starts.',
   },
   {
-    icon: Car,
-    title: 'Travel Together',
-    description: 'Enjoy your shared journey with safety tracking',
-    details:
-      'Real-time GPS tracking, emergency features, and community support throughout your trip.',
+    icon: CarFront,
+    title: 'Ride with confidence',
+    description:
+      'Track your commute, share the cost, and keep using trusted people for repeat trips.',
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id='how-it-works' className='py-24 bg-background'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <FadeIn>
-          <div className='text-center mb-16'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-6'>
-              How <span className='gradient-text'>RidePaddy</span> Works
-            </h2>
-            <p className='text-lg font-body text-muted-foreground max-w-3xl mx-auto'>
-              Getting started with RidePaddy is simple. Follow these four easy
-              steps to start your carpooling journey today.
-            </p>
-          </div>
-        </FadeIn>
+    <section id='how-it-works' className='px-4 py-20 sm:px-6 lg:px-8'>
+      <div className='mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-center'>
+        <div>
+          <FadeIn>
+            <Badge variant='secondary' className='mb-5 rounded-full px-4 py-2'>
+              Four simple steps
+            </Badge>
+          </FadeIn>
 
-        <div className='grid lg:grid-cols-2 gap-16 items-center'>
-          {/* Left Side - Steps */}
-          <div className='space-y-8'>
+          <FadeIn delay={0.1}>
+            <h2 className='section-title max-w-2xl'>
+              Easy to understand. Even easier to use every day.
+            </h2>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <p className='section-copy mt-5 max-w-2xl'>
+              The product flow is intentionally light: join, match, confirm, and
+              ride. No clutter, no confusing screens, and no complicated setup.
+            </p>
+          </FadeIn>
+
+          <div className='mt-10 space-y-4'>
             {steps.map((step, index) => {
               const Icon = step.icon;
+
               return (
-                <SlideIn key={step.title} direction='left' delay={index * 0.2}>
-                  <div className='flex items-start space-x-4 group'>
-                    <div className='flex-shrink-0'>
-                      <div className='w-16 h-16 bg-primary-20 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300'>
-                        <Icon className='h-8 w-8 text-primary group-hover:text-white' />
-                      </div>
+                <motion.div
+                  key={step.title}
+                  initial={{ opacity: 0, x: -24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45, delay: index * 0.08 }}
+                  viewport={{ once: true, margin: '-10%' }}
+                  className='section-shell p-5 sm:p-6'>
+                  <div className='flex items-start gap-4'>
+                    <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary'>
+                      <Icon className='h-5 w-5' />
                     </div>
-                    <div className='flex-1'>
-                      <div className='flex items-center space-x-3 mb-3'>
-                        <span className='bg-primary text-white text-sm font-heading font-bold px-3 py-1 rounded-full'>
+                    <div>
+                      <div className='mb-2 flex items-center gap-3'>
+                        <span className='inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-secondary px-2 text-xs font-semibold text-white'>
                           {index + 1}
                         </span>
-                        <h3 className='text-xl font-heading font-bold text-secondary'>
+                        <h3 className='text-lg font-heading font-semibold text-secondary'>
                           {step.title}
                         </h3>
                       </div>
-                      <p className='font-body text-foreground mb-2 font-medium'>
+                      <p className='text-sm leading-7 text-muted-foreground'>
                         {step.description}
-                      </p>
-                      <p className='text-sm font-body text-muted-foreground leading-relaxed'>
-                        {step.details}
                       </p>
                     </div>
                   </div>
-                </SlideIn>
+                </motion.div>
               );
             })}
           </div>
+        </div>
 
-          {/* Right Side - Visual */}
-          <div className='relative'>
-            <SlideIn direction='right' delay={0.4}>
-              <div className='relative'>
-                {/* Background Circle */}
-                <div className='absolute inset-0 bg-gradient-to-br from-primary-20 to-secondary-20 rounded-full transform rotate-6' />
-
-                {/* Phone Mockups */}
-                <div className='relative z-10 flex items-center justify-center'>
-                  <div className='grid grid-cols-2 gap-4'>
-                    {/* Driver App */}
-                    <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.8, delay: 0.6 }}
-                      className='w-48 h-96 bg-black rounded-3xl p-2 shadow-2xl'>
-                      <div className='w-full h-full bg-card rounded-2xl overflow-hidden relative'>
-                        <Image
-                          src='/images/driver-app-mockup.png'
-                          alt='Driver App Interface'
-                          fill
-                          className='object-cover'
-                        />
-                        <div className='absolute top-4 left-4 bg-primary text-white text-xs font-body px-2 py-1 rounded-full'>
-                          Driver
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Passenger App */}
-                    <motion.div
-                      initial={{ opacity: 0, x: 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.8, delay: 0.8 }}
-                      className='w-48 h-96 bg-black rounded-3xl p-2 shadow-2xl mt-8'>
-                      <div className='w-full h-full bg-card rounded-2xl overflow-hidden relative'>
-                        <Image
-                          src='/images/passenger-app-mockup.png'
-                          alt='Passenger App Interface'
-                          fill
-                          className='object-cover'
-                        />
-                        <div className='absolute top-4 left-4 bg-secondary text-white text-xs font-body px-2 py-1 rounded-full'>
-                          Passenger
-                        </div>
-                      </div>
-                    </motion.div>
+        <FadeIn delay={0.3}>
+          <div className='section-shell soft-grid p-5 sm:p-7'>
+            <div className='grid gap-4 md:grid-cols-[0.94fr_1.06fr]'>
+              <div className='grid gap-4'>
+                <div className='rounded-[1.6rem] bg-secondary p-3'>
+                  <div className='relative aspect-[3/4] overflow-hidden rounded-[1.2rem]'>
+                    <Image
+                      src='/images/new-onboard.png'
+                      alt='RidePaddy onboarding screen showing quick reliable commuting'
+                      fill
+                      className='object-cover'
+                      sizes='(max-width: 768px) 100vw, 320px'
+                    />
                   </div>
                 </div>
 
-                {/* Floating Elements */}
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: [-5, 5, -5] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className='absolute top-16 -right-8 bg-card p-3 rounded-xl shadow-lg'>
-                  <div className='text-center'>
-                    <div className='text-2xl font-heading font-bold text-primary'>99.8%</div>
-                    <div className='text-xs font-body text-muted-foreground'>Safety Rating</div>
+                <div className='rounded-[1.6rem] border border-secondary/10 bg-white/80 p-3'>
+                  <div className='relative aspect-[3/4] overflow-hidden rounded-[1.2rem]'>
+                    <Image
+                      src='/images/new-onboard2.png'
+                      alt='RidePaddy onboarding screen about earning from daily commutes'
+                      fill
+                      className='object-cover'
+                      sizes='(max-width: 768px) 100vw, 320px'
+                    />
                   </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: [5, -5, 5] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 1.5,
-                  }}
-                  className='absolute bottom-16 -left-8 bg-card p-3 rounded-xl shadow-lg'>
-                  <div className='text-center'>
-                    <div className='text-2xl font-heading font-bold text-primary'>50K+</div>
-                    <div className='text-xs font-body text-muted-foreground'>Happy Users</div>
-                  </div>
-                </motion.div>
+                </div>
               </div>
-            </SlideIn>
+
+              <div className='flex flex-col gap-4'>
+                <div className='rounded-[1.6rem] bg-primary/12 p-5'>
+                  <div className='text-sm font-medium uppercase tracking-[0.2em] text-secondary/60'>
+                    From first impression
+                  </div>
+                  <div className='mt-3 text-2xl font-heading font-semibold text-secondary'>
+                    Branded, calm onboarding that feels deliberate.
+                  </div>
+                  <p className='mt-3 text-sm leading-7 text-muted-foreground'>
+                    The app opens with a strong brand moment, then quickly moves
+                    into a clear explanation of value and next steps.
+                  </p>
+                </div>
+
+                <div className='grid gap-4 sm:grid-cols-2'>
+                  <div className='rounded-[1.4rem] border border-secondary/8 bg-white/80 p-5'>
+                    <div className='text-2xl font-heading font-bold text-secondary'>
+                      Clear copy
+                    </div>
+                    <div className='mt-1 text-sm text-muted-foreground'>
+                      Simple product messaging from the first screen
+                    </div>
+                  </div>
+                  <div className='rounded-[1.4rem] border border-secondary/8 bg-white/80 p-5'>
+                    <div className='text-2xl font-heading font-bold text-secondary'>
+                      Guided flow
+                    </div>
+                    <div className='mt-1 text-sm text-muted-foreground'>
+                      Onboarding explains value before asking for commitment
+                    </div>
+                  </div>
+                </div>
+
+                <div className='rounded-[1.6rem] bg-secondary px-5 py-6 text-white'>
+                  <div className='text-sm uppercase tracking-[0.2em] text-white/60'>
+                    To daily use
+                  </div>
+                  <div className='mt-2 text-3xl font-heading font-bold'>
+                    Product flow that stays understandable.
+                  </div>
+                  <p className='mt-3 text-sm leading-7 text-white/75'>
+                    The visuals now reflect the real product UI instead of
+                    placeholder marketing mockups.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
