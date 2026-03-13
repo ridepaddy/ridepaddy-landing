@@ -8,7 +8,7 @@ import { NetworkStatus } from '@/components/network-status';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-// Primary Font -- Creato Display
+// Primary Font --- Creato Display
 const creatoDisplay = localFont({
   src: [
     {
