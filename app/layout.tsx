@@ -8,7 +8,7 @@ import { NetworkStatus } from '@/components/network-status';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-// Primary Font - Creato Display
+// Primary Font -- Creato Display
 const creatoDisplay = localFont({
   src: [
     {
@@ -117,8 +117,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: {
-      'index': true,
-      'follow': true,
+      index: true,
+      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -158,15 +158,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang='en'
-      className={`${creatoDisplay.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${creatoDisplay.variable} ${montserrat.variable}`}>
       <body className={`${montserrat.className} antialiased`}>
         <NetworkStatus />
         {children}
         <WhatsAppChat />
         <Toaster
-          position='top-right'
+          position="top-right"
           richColors
           expand={true}
           duration={4000}
