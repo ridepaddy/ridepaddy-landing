@@ -9,39 +9,39 @@ export const faqStructuredData = {
       name: 'What is RidePaddy?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'RidePaddy is a carpooling platform that connects drivers and passengers in Nigeria for safe, affordable, and eco-friendly transportation. We help you find reliable ride buddies for your daily commute or occasional trips.',
+        text: 'RidePaddy is a booking service for private, chauffeur-driven transport in Nigeria. You describe your trip and we arrange a vetted vehicle and driver at a fixed price.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How do I join the waitlist?',
+      name: 'What can I book with RidePaddy?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Simply fill out the waitlist form on our homepage with your email address. You'll be among the first to know when RidePaddy launches in your city.",
+        text: 'Interstate trips, airport pickups and drop-offs, and hourly or full-day hire with a driver. You book the whole vehicle, not a seat.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Is RidePaddy safe?',
+      name: 'Where is RidePaddy launching?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'RidePaddy is being designed around identity checks, trip visibility, reporting, and two-way ratings. Exact safety features and availability will be published before launch in each city.',
+        text: 'We are starting in Lagos, with trips to nearby cities such as Ibadan and Abeokuta and transfers at Lagos airport. Other cities follow as operators join.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Which cities does RidePaddy operate in?',
+      name: 'How do I book before launch?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We are launching soon in Lagos and Abuja, with plans to expand to other major cities across Nigeria including Port Harcourt, Ibadan, Kano, and more.',
+        text: 'Join the launch list on our homepage. We will contact you when bookings open on your route.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How much does it cost to use RidePaddy?',
+      name: 'How does RidePaddy choose operators?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'RidePaddy charges a small service fee per trip. Passengers and drivers share the cost of transportation, making it more affordable than traditional ride-hailing services.',
+        text: 'Operators are checked for business registration, vehicle papers, insurance and driver licences, and each vehicle is inspected before its first booking.',
       },
     },
   ],

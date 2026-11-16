@@ -11,8 +11,6 @@ const requiredFiles = [
   'app/privacy/page.tsx',
   'components/sections/hero.tsx',
   'components/sections/waitlist.tsx',
-  'public/images/Splash.png',
-  'public/images/new-onboarding.png',
   '.env.example',
 ];
 

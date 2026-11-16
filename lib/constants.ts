@@ -1,18 +1,16 @@
 export const APP_CONFIG = {
   name: 'RidePaddy',
-  description: "Find Your Ride Buddy - Nigeria's Trusted Carpooling Platform",
+  description: 'Private car and driver hire in Nigeria, booked at a fixed price',
   url: 'https://ridepaddy.com',
   author: 'RidePaddy Team',
   keywords: [
-    'carpooling',
-    'ride sharing',
+    'car hire with driver',
+    'vehicle charter',
+    'chauffeur service',
+    'airport transfer',
+    'interstate travel',
     'Nigeria',
     'Lagos',
-    'Abuja',
-    'transportation',
-    'commute',
-    'paddy',
-    'buddy',
   ],
 };
 
@@ -30,31 +28,16 @@ export const SOCIAL_LINKS = {
   linkedin: 'https://linkedin.com/company/ridepaddy',
 };
 
-export const APP_STORE_LINKS = {
-  ios: 'https://apps.apple.com/app/ridepaddy',
-  android: 'https://play.google.com/store/apps/details?id=com.ridepaddy',
-};
-
 export const TEAM_MEMBERS = [
   {
     name: 'Maurice Ogbebor',
-    role: 'Co-Founder & CEO',
+    role: 'Founder',
     image: '/images/mauricePhoto.jpg',
   },
   {
     name: 'Abdulrasheed Tijani',
-    role: 'Co-Founder & CTO',
+    role: 'Co-Founder',
     image: '/images/rasheedPhoto.jpeg',
-  },
-  {
-    name: 'Elijah Ugwu',
-    role: 'Chief Operating Officer',
-    image: '/images/elijahPhoto.jpeg',
-  },
-  {
-    name: 'Oluwayomi Adekanye',
-    role: 'VP Engineering',
-    image: '/images/kanyePhoto.jpg',
   },
 ] as const;
 
@@ -71,11 +54,6 @@ export const CITIES = [
   'Ilorin',
 ] as const;
 
-export const USER_TYPES = [
-  { value: 'driver', label: 'Driver - I want to offer rides' },
-  { value: 'passenger', label: 'Passenger - I need rides' },
-  { value: 'both', label: 'Both - I drive and need rides' },
-] as const;
 
 // Animation variants for consistent motion
 export const ANIMATION_VARIANTS = {

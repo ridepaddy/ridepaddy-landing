@@ -1,31 +1,37 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
+  CalendarClock,
+  CarFront,
   CheckCircle2,
+  MapPin,
+  Route,
   ShieldCheck,
   Sparkles,
-  Star,
   Users,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { FadeIn } from '../animations/fade-in';
-import { SlideIn } from '../animations/slide-in';
-
-const trustMetrics = [
-  { label: 'Profile checks and trust signals', value: 'Verified' },
-  { label: 'Simple route coordination', value: 'Smooth' },
-  { label: 'Built around familiar riders', value: 'Community' },
-];
 
 const highlights = [
-  'Verified drivers and riders',
-  'Designed for Nigerian routes',
-  'Save money without losing comfort',
+  'Vetted operators and drivers',
+  'One price agreed before you travel',
+  'The whole vehicle, never a shared seat',
+];
+
+const requestDetails = [
+  { icon: CalendarClock, label: 'Date and time', value: 'Saturday, 7:00 AM' },
+  { icon: Users, label: 'Passengers', value: '3 with luggage' },
+  { icon: CarFront, label: 'Vehicle', value: 'SUV' },
+  { icon: Route, label: 'Service', value: 'One-way' },
+];
+
+const requestOutcomes = [
+  'Two or three quotes to compare',
+  'One all-in price on each quote',
+  'Driver name, photo and plate after you book',
 ];
 
 export function Hero() {
@@ -38,35 +44,36 @@ export function Hero() {
       <div className='relative mx-auto max-w-7xl'>
         <div className='grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]'>
           <div>
-            <FadeIn>
+            <div className='rise'>
               <Badge
                 variant='secondary'
                 className='mb-6 rounded-full border border-white/70 bg-white/75 px-4 py-2 text-secondary shadow-sm backdrop-blur'>
                 <Sparkles className='mr-2 h-4 w-4' />
-                Safe, social commuting for modern Nigerian cities
+                Private car and driver hire, launching first in Lagos
               </Badge>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.1}>
+            <div className='rise' style={{ animationDelay: '0.1s' }}>
               <h1 className='max-w-3xl text-5xl font-heading font-bold leading-[0.95] tracking-tight text-secondary md:text-6xl lg:text-7xl'>
-                Move smarter.
-                <span className='gradient-text block'>Find your ride paddy.</span>
+                Your trip.
+                <span className='block'>Your car.</span>
+                <span className='gradient-text block'>Your driver.</span>
               </h1>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.2}>
+            <div className='rise' style={{ animationDelay: '0.2s' }}>
               <p className='mt-6 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl'>
-                RidePaddy makes commuting feel lighter: better matches, verified
-                profiles, cleaner navigation, and a more human way to get
-                across town.
+                Tell RidePaddy where you are going and when. We bring you
+                fixed-price quotes from vetted transport operators for
+                interstate trips, airport transfers and day hire.
               </p>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.3}>
+            <div className='rise' style={{ animationDelay: '0.3s' }}>
               <div className='mt-8 flex flex-col gap-3 sm:flex-row'>
                 <Button size='lg' className='rounded-full px-7' asChild>
                   <Link href='#waitlist'>
-                    Join the waitlist
+                    Join the launch list
                     <ArrowRight className='h-4 w-4' />
                   </Link>
                 </Button>
@@ -78,9 +85,9 @@ export function Hero() {
                   <Link href='#how-it-works'>See how it works</Link>
                 </Button>
               </div>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.4}>
+            <div className='rise' style={{ animationDelay: '0.4s' }}>
               <div className='mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
                 {highlights.map((item) => (
                   <div
@@ -91,92 +98,94 @@ export function Hero() {
                   </div>
                 ))}
               </div>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.5}>
-              <div className='mt-10 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3'>
-                {trustMetrics.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className='rounded-3xl border border-white/70 bg-white/72 p-5 shadow-[0_18px_50px_rgba(20,61,71,0.07)] backdrop-blur'>
-                    <div className='text-2xl font-heading font-bold text-secondary'>
-                      {metric.value}
-                    </div>
-                    <div className='mt-1 text-sm text-muted-foreground'>
-                      {metric.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
           </div>
 
           <div className='relative'>
-            <SlideIn direction='right' delay={0.2}>
-              <div className='relative mx-auto max-w-[30rem]'>
-                <div className='section-shell p-4'>
-                  <div className='relative overflow-hidden rounded-[1.6rem] bg-secondary p-3'>
-                    <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.28),transparent_42%)]' />
-                    <div className='relative mx-auto max-w-[18rem] overflow-hidden rounded-[1.35rem] border border-white/10 shadow-2xl'>
-                      <Image
-                        src='/images/new-onboarding.png'
-                        alt='RidePaddy welcome screen in device frame'
-                        width={740}
-                        height={1486}
-                        className='h-auto w-full object-cover'
-                        priority
-                      />
+            <div className='rise' style={{ animationDelay: '0.2s' }}>
+              <div className='section-shell mx-auto max-w-[30rem] p-5 sm:p-6'>
+                <div className='flex items-center justify-between gap-3'>
+                  <div className='text-xs font-medium uppercase tracking-[0.2em] text-secondary/60'>
+                    Example request
+                  </div>
+                  <div className='inline-flex items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-secondary'>
+                    <ShieldCheck className='h-3.5 w-3.5 text-primary' />
+                    Vetted operators only
+                  </div>
+                </div>
+
+                <div
+                  className='rise mt-4 rounded-[1.4rem] bg-secondary p-5 text-white'
+                  style={{ animationDelay: '0.45s' }}>
+                  <div className='flex items-start gap-3'>
+                    <div className='mt-1 flex flex-col items-center'>
+                      <span className='h-2.5 w-2.5 rounded-full bg-primary' />
+                      <span className='my-1 h-9 w-px bg-white/30' />
+                      <MapPin className='h-4 w-4 text-primary' />
+                    </div>
+                    <div className='flex-1 space-y-4'>
+                      <div>
+                        <div className='text-xs uppercase tracking-[0.18em] text-white/60'>
+                          Pickup
+                        </div>
+                        <div className='text-lg font-heading font-semibold'>
+                          Lekki, Lagos
+                        </div>
+                      </div>
+                      <div>
+                        <div className='text-xs uppercase tracking-[0.18em] text-white/60'>
+                          Destination
+                        </div>
+                        <div className='text-lg font-heading font-semibold'>
+                          Bodija, Ibadan
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className='absolute -left-4 top-8 rounded-3xl border border-white/80 bg-white/90 p-4 shadow-xl backdrop-blur'>
-                  <div className='flex items-start gap-3'>
-                    <div className='rounded-2xl bg-primary/15 p-3'>
-                      <ShieldCheck className='h-5 w-5 text-primary' />
-                    </div>
-                    <div>
-                      <div className='text-sm font-semibold text-secondary'>
-                        Verified and secure
-                      </div>
-                      <div className='mt-1 text-xs leading-5 text-muted-foreground'>
-                        Profiles, routes, and ride preferences checked.
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
+                <div className='mt-4 grid grid-cols-2 gap-3'>
+                  {requestDetails.map((detail, index) => {
+                    const Icon = detail.icon;
 
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: [10, -10, 10] }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 1.2,
-                  }}
-                  className='absolute -bottom-4 right-0 rounded-3xl border border-white/80 bg-white/92 p-4 shadow-xl backdrop-blur'>
-                  <div className='flex items-center gap-4'>
-                    <div className='rounded-2xl bg-secondary/10 p-3'>
-                      <Users className='h-5 w-5 text-secondary' />
-                    </div>
-                    <div>
-                      <div className='flex items-center gap-1 text-secondary'>
-                        <Star className='h-4 w-4 fill-primary text-primary' />
-                        <span className='text-sm font-semibold'>Community-first rides</span>
+                    return (
+                      <div
+                        key={detail.label}
+                        className='rise rounded-2xl border border-secondary/8 bg-white/80 p-4'
+                        style={{ animationDelay: `${0.65 + index * 0.12}s` }}>
+                        <div className='flex items-center gap-2 text-xs text-muted-foreground'>
+                          <Icon className='h-3.5 w-3.5 text-primary' />
+                          {detail.label}
+                        </div>
+                        <div className='mt-1 text-sm font-semibold text-secondary'>
+                          {detail.value}
+                        </div>
                       </div>
-                      <div className='mt-1 text-xs text-muted-foreground'>
-                        Match with people on the same route and rhythm.
-                      </div>
-                    </div>
+                    );
+                  })}
+                </div>
+
+                <div
+                  className='rise mt-4 rounded-[1.4rem] bg-primary/12 p-5'
+                  style={{ animationDelay: '1.2s' }}>
+                  <div className='text-sm font-heading font-semibold text-secondary'>
+                    What you get back
                   </div>
-                </motion.div>
+                  <ul className='mt-3 space-y-2'>
+                    {requestOutcomes.map((outcome, index) => (
+                      <li
+                        key={outcome}
+                        className='rise flex items-start gap-2 text-sm text-secondary'
+                        style={{ animationDelay: `${1.4 + index * 0.15}s` }}>
+                        <CheckCircle2 className='mt-0.5 h-4 w-4 shrink-0 text-primary' />
+                        {outcome}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </SlideIn>
+            </div>
           </div>
         </div>
       </div>

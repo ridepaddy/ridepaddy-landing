@@ -73,9 +73,9 @@ export default function NotFound() {
               How It Works
             </Link>
             <Link
-              href='/#safety'
+              href='/#faq'
               className='text-sm font-body text-muted-foreground hover:text-primary transition-colors duration-200'>
-              Safety
+              FAQ
             </Link>
             <Link
               href='/#waitlist'

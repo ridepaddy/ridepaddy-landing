@@ -34,8 +34,7 @@ async function forwardSubmission(kind: SubmissionKind, submission: Record<string
 }
 
 export async function appendWaitlistSubmission(submission: Record<string, unknown>) {
-  const result = await forwardSubmission('waitlist', submission);
-  return { position: typeof result.position === 'number' ? result.position : null };
+  await forwardSubmission('waitlist', submission);
 }
 
 export async function appendContactSubmission(submission: Record<string, unknown>) {

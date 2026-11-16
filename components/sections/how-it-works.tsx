@@ -1,59 +1,79 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { CarFront, Map, MessageSquareText, UserRoundPlus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { FadeIn } from '@/components/animations/fade-in';
 
 const steps = [
   {
-    icon: UserRoundPlus,
-    title: 'Create your profile',
-    description:
-      'Tell RidePaddy where you commute, how often you move, and what kind of ride you prefer.',
-  },
-  {
     icon: Map,
-    title: 'Match on route',
+    title: 'Tell us your trip',
     description:
-      'The app surfaces drivers and riders already going your way, with clearer context and timing.',
+      'Share your pickup, destination, date, time, passengers and the kind of vehicle you need.',
   },
   {
     icon: MessageSquareText,
-    title: 'Confirm details',
+    title: 'Compare quotes',
     description:
-      'Coordinate pickup, timing, and comfort preferences before the trip starts.',
+      'We ask vetted operators who cover your route and send you two or three all-in prices to choose from.',
+  },
+  {
+    icon: UserRoundPlus,
+    title: 'Book and pay',
+    description:
+      'Choose a quote and pay online. We then send your driver and vehicle details.',
   },
   {
     icon: CarFront,
-    title: 'Ride with confidence',
+    title: 'Travel',
     description:
-      'Track your commute, share the cost, and keep using trusted people for repeat trips.',
+      'Your driver arrives at the agreed place and time. Our team stays reachable until you are dropped off.',
+  },
+];
+
+const services = [
+  {
+    title: 'One-way or return',
+    description: 'Interstate trips such as Lagos to Ibadan or Abeokuta',
+  },
+  {
+    title: 'Airport transfer',
+    description: 'Pickup or drop-off at Lagos airport',
+  },
+  {
+    title: 'Day hire',
+    description: 'A car and driver for a few hours or the whole day',
+  },
+  {
+    title: 'Wait and return',
+    description: 'Your driver waits while you attend a meeting or event',
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id='how-it-works' className='px-4 py-20 sm:px-6 lg:px-8'>
-      <div className='mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-center'>
+    <section id='how-it-works' className='px-4 py-12 sm:px-6 lg:px-8 lg:py-16'>
+      <div className='mx-auto grid max-w-7xl gap-12 rounded-[2rem] bg-secondary p-8 shadow-[0_24px_80px_rgba(20,61,71,0.22)] sm:p-10 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:p-14'>
         <div>
           <FadeIn>
-            <Badge variant='secondary' className='mb-5 rounded-full px-4 py-2'>
+            <Badge
+              variant='secondary'
+              className='mb-5 rounded-full bg-white/10 px-4 py-2 text-white'>
               Four simple steps
             </Badge>
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <h2 className='section-title max-w-2xl'>
-              Easy to understand. Even easier to use every day.
+            <h2 className='max-w-2xl text-3xl font-heading font-bold tracking-tight text-white md:text-4xl lg:text-5xl'>
+              From itinerary to pickup in four steps.
             </h2>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <p className='section-copy mt-5 max-w-2xl'>
-              The product flow is intentionally light: join, match, confirm, and
-              ride. No clutter, no confusing screens, and no complicated setup.
+            <p className='mt-5 max-w-2xl text-base leading-8 text-white/75 md:text-lg'>
+              Here is how a booking will work when we open in Lagos. There is
+              no app to download and no account needed to ask for a quote.
             </p>
           </FadeIn>
 
@@ -68,7 +88,8 @@ export function HowItWorks() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.45, delay: index * 0.08 }}
                   viewport={{ once: true, margin: '-10%' }}
-                  className='section-shell p-5 sm:p-6'>
+                  className='section-shell p-5 sm:p-6'
+                  style={{ backgroundColor: '#fff' }}>
                   <div className='flex items-start gap-4'>
                     <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary'>
                       <Icon className='h-5 w-5' />
@@ -94,79 +115,50 @@ export function HowItWorks() {
         </div>
 
         <FadeIn delay={0.3}>
-          <div className='section-shell soft-grid p-5 sm:p-7'>
-            <div className='grid gap-4 md:grid-cols-[0.94fr_1.06fr]'>
-              <div className='grid gap-4'>
-                <div className='rounded-[1.6rem] bg-secondary p-3'>
-                  <div className='relative aspect-[3/4] overflow-hidden rounded-[1.2rem]'>
-                    <Image
-                      src='/images/new-onboard.png'
-                      alt='RidePaddy onboarding screen showing quick reliable commuting'
-                      fill
-                      className='object-cover'
-                      sizes='(max-width: 768px) 100vw, 320px'
-                    />
-                  </div>
+          <div
+            className='section-shell soft-grid p-5 sm:p-7'
+            style={{ backgroundColor: '#fff' }}>
+            <div className='flex flex-col gap-4'>
+              <div className='rounded-[1.6rem] bg-primary/12 p-5'>
+                <div className='text-sm font-medium uppercase tracking-[0.2em] text-secondary/60'>
+                  Services at launch
                 </div>
-
-                <div className='rounded-[1.6rem] border border-secondary/10 bg-white/80 p-3'>
-                  <div className='relative aspect-[3/4] overflow-hidden rounded-[1.2rem]'>
-                    <Image
-                      src='/images/new-onboard2.png'
-                      alt='RidePaddy onboarding screen about earning from daily commutes'
-                      fill
-                      className='object-cover'
-                      sizes='(max-width: 768px) 100vw, 320px'
-                    />
-                  </div>
+                <div className='mt-3 text-2xl font-heading font-semibold text-secondary'>
+                  Four ways to book a car and driver.
                 </div>
+                <p className='mt-3 text-sm leading-7 text-muted-foreground'>
+                  Choose the arrangement that fits your trip. Not sure which?
+                  Describe the trip and we will advise.
+                </p>
               </div>
 
-              <div className='flex flex-col gap-4'>
-                <div className='rounded-[1.6rem] bg-primary/12 p-5'>
-                  <div className='text-sm font-medium uppercase tracking-[0.2em] text-secondary/60'>
-                    From first impression
-                  </div>
-                  <div className='mt-3 text-2xl font-heading font-semibold text-secondary'>
-                    Branded, calm onboarding that feels deliberate.
-                  </div>
-                  <p className='mt-3 text-sm leading-7 text-muted-foreground'>
-                    The app opens with a strong brand moment, then quickly moves
-                    into a clear explanation of value and next steps.
-                  </p>
-                </div>
-
-                <div className='grid gap-4 sm:grid-cols-2'>
-                  <div className='rounded-[1.4rem] border border-secondary/8 bg-white/80 p-5'>
-                    <div className='text-2xl font-heading font-bold text-secondary'>
-                      Clear copy
+              <div className='grid gap-4 sm:grid-cols-2'>
+                {services.map((service) => (
+                  <div
+                    key={service.title}
+                    className='rounded-[1.4rem] border border-secondary/8 bg-white/80 p-5'>
+                    <div className='text-xl font-heading font-bold text-secondary'>
+                      {service.title}
                     </div>
                     <div className='mt-1 text-sm text-muted-foreground'>
-                      Simple product messaging from the first screen
+                      {service.description}
                     </div>
                   </div>
-                  <div className='rounded-[1.4rem] border border-secondary/8 bg-white/80 p-5'>
-                    <div className='text-2xl font-heading font-bold text-secondary'>
-                      Guided flow
-                    </div>
-                    <div className='mt-1 text-sm text-muted-foreground'>
-                      Onboarding explains value before asking for commitment
-                    </div>
-                  </div>
-                </div>
+                ))}
+              </div>
 
-                <div className='rounded-[1.6rem] bg-secondary px-5 py-6 text-white'>
-                  <div className='text-sm uppercase tracking-[0.2em] text-white/60'>
-                    To daily use
-                  </div>
-                  <div className='mt-2 text-3xl font-heading font-bold'>
-                    Product flow that stays understandable.
-                  </div>
-                  <p className='mt-3 text-sm leading-7 text-white/75'>
-                    The visuals now reflect the real product UI instead of
-                    placeholder marketing mockups.
-                  </p>
+              <div className='rounded-[1.6rem] bg-secondary px-5 py-6 text-white'>
+                <div className='text-sm uppercase tracking-[0.2em] text-white/60'>
+                  Launching first in
                 </div>
+                <div className='mt-2 text-3xl font-heading font-bold'>
+                  Lagos and the South-West.
+                </div>
+                <p className='mt-3 text-sm leading-7 text-white/75'>
+                  More cities follow as vetted operators join. Tell us your
+                  route on the launch list and we will let you know when it
+                  opens.
+                </p>
               </div>
             </div>
           </div>

@@ -24,12 +24,8 @@ const getNavigation = (pathname: string) => [
     href: pathname === '/' ? '#how-it-works' : '/#how-it-works',
   },
   {
-    name: 'Safety',
-    href: pathname === '/' ? '#safety' : '/#safety',
-  },
-  {
-    name: 'Download',
-    href: pathname === '/' ? '#download' : '/#download',
+    name: 'FAQ',
+    href: pathname === '/' ? '#faq' : '/#faq',
   },
 ];
 
@@ -98,7 +94,7 @@ export function Header() {
             </Link>
             <Button size='sm' className='rounded-full px-5' asChild>
               <Link href={waitlistHref}>
-                Join waitlist
+                Join launch list
                 <ArrowUpRight className='h-4 w-4' />
               </Link>
             </Button>
@@ -148,7 +144,7 @@ export function Header() {
                   </Link>
                 </Button>
                 <Button className='w-full rounded-full' asChild>
-                  <Link href={waitlistHref}>Join waitlist</Link>
+                  <Link href={waitlistHref}>Join launch list</Link>
                 </Button>
               </div>
             </nav>

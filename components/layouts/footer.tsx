@@ -14,11 +14,10 @@ const getFooterLinks = (pathname: string) => ({
       name: 'How It Works',
       href: pathname === '/' ? '#how-it-works' : '/#how-it-works',
     },
-    { name: 'Safety', href: pathname === '/' ? '#safety' : '/#safety' },
-    { name: 'Download', href: pathname === '/' ? '#download' : '/#download' },
+    { name: 'FAQ', href: pathname === '/' ? '#faq' : '/#faq' },
   ],
   support: [
-    { name: 'Join Waitlist', href: pathname === '/' ? '#waitlist' : '/#waitlist' },
+    { name: 'Join Launch List', href: pathname === '/' ? '#waitlist' : '/#waitlist' },
     { name: 'Contact', href: '/contact' },
     { name: 'Terms', href: '/terms' },
     { name: 'Privacy', href: '/privacy' },
@@ -26,9 +25,8 @@ const getFooterLinks = (pathname: string) => ({
   ],
   company: [
     { name: 'About Us', href: '/about' },
-    { name: 'Community', href: pathname === '/' ? '#testimonials' : '/#testimonials' },
-    { name: 'Launch Cities', href: pathname === '/' ? '#waitlist' : '/#waitlist' },
-    { name: 'Download App', href: pathname === '/' ? '#download' : '/#download' },
+    { name: 'Team', href: pathname === '/' ? '#team' : '/#team' },
+    { name: 'Launch Routes', href: pathname === '/' ? '#waitlist' : '/#waitlist' },
   ],
 });
 
@@ -66,8 +64,8 @@ export function Footer() {
               />
             </Link>
             <p className="mb-6 max-w-sm text-sm leading-7 text-secondary-foreground/80">
-              A Nigerian carpooling platform in development. Join the waitlist for updates on safer,
-              smarter, and more social commuting.
+              Private car and driver hire in Nigeria, launching first in Lagos. Join the launch list
+              for updates on your route.
             </p>
 
             <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-primary">
@@ -92,12 +90,12 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 font-heading text-lg font-semibold">Explore</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-0.5">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-secondary-foreground/80 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+                    className="inline-block py-1.5 text-secondary-foreground/80 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
                   >
                     {link.name}
                   </Link>
@@ -108,12 +106,12 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 font-heading text-lg font-semibold">Connect</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-0.5">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-secondary-foreground/80 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+                    className="inline-block py-1.5 text-secondary-foreground/80 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
                   >
                     {link.name}
                   </Link>
@@ -124,12 +122,12 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 font-heading text-lg font-semibold">RidePaddy</h3>
-            <ul className="mb-6 space-y-2">
+            <ul className="mb-6 space-y-0.5">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-secondary-foreground/80 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+                    className="inline-block py-1.5 text-secondary-foreground/80 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
                   >
                     {link.name}
                   </Link>
@@ -138,9 +136,9 @@ export function Footer() {
             </ul>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-              <h4 className="mb-2 font-heading text-lg font-semibold">Start with the waitlist</h4>
+              <h4 className="mb-2 font-heading text-lg font-semibold">Start with the launch list</h4>
               <p className="mb-4 text-sm leading-6 text-secondary-foreground/80">
-                Early access, launch updates, and first-ride perks in one place.
+                Launch updates and first access to bookings on your route.
               </p>
               <Button className="w-full rounded-full" asChild>
                 <Link href={pathname === '/' ? '#waitlist' : '/#waitlist'}>Reserve your spot</Link>

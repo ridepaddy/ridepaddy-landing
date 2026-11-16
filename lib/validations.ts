@@ -9,18 +9,21 @@ export const waitlistSchema = z.object({
     .string()
     .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name must be less than 100 characters'),
+  // International format, or a Nigerian local number such as 08012345678.
   phoneNumber: z
     .string()
-    .min(10, 'Phone number must be at least 10 digits')
-    .regex(/^\+?[1-9]\d{1,14}$/, 'Please enter a valid phone number'),
-  city: z
-    .string()
-    .min(1, 'City is required')
-    .max(50, 'City name must be less than 50 characters'),
-  userType: z.enum(['driver', 'passenger', 'both'], {
-    message: 'Please select your intended use', // Changed from required_error
+    .min(1, 'Phone number is required')
+    .regex(/^(\+?[1-9]\d{7,14}|0\d{10})$/, 'Please enter a valid phone number'),
+  role: z.enum(['customer', 'operator'], {
+    message: 'Please tell us how you will use RidePaddy',
   }),
-  referralCode: z.string().optional(),
+  service: z.enum(['intercity', 'day_hire', 'airport_transfer', 'not_sure'], {
+    message: 'Please choose a service',
+  }),
+  fromLocation: z.string().max(120, 'Please keep this under 120 characters').optional(),
+  toLocation: z.string().max(120, 'Please keep this under 120 characters').optional(),
+  // Honeypot field. Real visitors never see or fill it.
+  website: z.string().max(200).optional(),
 });
 
 export type WaitlistFormData = z.infer<typeof waitlistSchema>;

@@ -16,7 +16,7 @@ export const organizationStructuredData = {
   '@type': 'Organization',
   name: 'RidePaddy',
   description:
-    'A carpooling platform being built for safer, more affordable shared commutes in Nigerian cities.',
+    'A booking service for private, chauffeur-driven vehicle hire in Nigeria, launching first in Lagos.',
   url: 'https://ridepaddy.com',
   logo: 'https://ridepaddy.com/images/brand/Green-Logo-Icon.svg',
   foundingDate: '2023',

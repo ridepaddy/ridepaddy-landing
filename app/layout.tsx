@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from 'sonner';
 import WhatsAppChat from '@/components/WhatsAppWidget';
 import { NetworkStatus } from '@/components/network-status';
+import { MotionProvider } from '@/components/animations/motion-provider';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -53,19 +54,19 @@ const creatoDisplay = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: 'RidePaddy - Find Your Ride Buddy',
+    default: 'RidePaddy - Private Car and Driver Hire in Nigeria',
     template: '%s | RidePaddy',
   },
   description:
-    'Join the waitlist for RidePaddy, a carpooling platform being built for safer, more affordable shared commutes in Nigeria.',
+    'Book a vetted car and driver for interstate trips, airport transfers and day hire. RidePaddy is launching first in Lagos. Join the launch list.',
   keywords: [
-    'carpooling',
-    'ride sharing',
+    'car hire with driver',
+    'vehicle charter',
+    'chauffeur service',
+    'airport transfer',
+    'interstate travel',
     'Nigeria',
     'Lagos',
-    'Abuja',
-    'transportation',
-    'commute',
   ],
   authors: [{ name: 'RidePaddy Team' }],
   creator: 'RidePaddy',
@@ -80,9 +81,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'RidePaddy - Find Your Ride Buddy',
+    title: 'RidePaddy - Private Car and Driver Hire in Nigeria',
     description:
-      'A carpooling platform being built for safer, more affordable shared commutes in Nigeria.',
+      'Book a vetted car and driver for interstate trips, airport transfers and day hire. Launching first in Lagos.',
     url: 'https://ridepaddy.com',
     siteName: 'RidePaddy',
     images: [
@@ -90,7 +91,7 @@ export const metadata: Metadata = {
         url: '/images/Ride-Paddy-Brand.jpg',
         width: 1200,
         height: 630,
-        alt: 'RidePaddy - Carpooling App',
+        alt: 'RidePaddy - Private car and driver hire',
       },
     ],
     locale: 'en_NG',
@@ -98,9 +99,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RidePaddy - Find Your Ride Buddy',
+    title: 'RidePaddy - Private Car and Driver Hire in Nigeria',
     description:
-      'A carpooling platform being built for safer, more affordable shared commutes in Nigeria.',
+      'Book a vetted car and driver for interstate trips, airport transfers and day hire. Launching first in Lagos.',
     images: ['/images/Ride-Paddy-Brand.jpg'],
     creator: '@ridepaddy',
   },
@@ -152,7 +153,7 @@ export default function RootLayout({
     <html lang="en" className={creatoDisplay.variable}>
       <body className={`${creatoDisplay.className} antialiased`}>
         <NetworkStatus />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <WhatsAppChat />
         <Toaster
           position="top-right"

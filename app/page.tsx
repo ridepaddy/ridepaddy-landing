@@ -18,29 +18,14 @@ const HowItWorks = dynamic(
   }
 );
 
-const Safety = dynamic(() =>
-  import('@/components/sections/safety').then((mod) => ({ default: mod.Safety }))
-);
-
-const Testimonials = dynamic(
-  () => import('@/components/sections/testimonials').then((mod) => ({ default: mod.Testimonials })),
-  {
-    loading: () => <div className="min-h-screen bg-white animate-pulse" />,
-  }
-);
-
-const DownloadApp = dynamic(() =>
-  import('@/components/sections/download-app').then((mod) => ({ default: mod.DownloadApp }))
-);
-
 const Waitlist = dynamic(() =>
   import('@/components/sections/waitlist').then((mod) => ({ default: mod.Waitlist }))
 );
 
 export const metadata: Metadata = {
-  title: 'RidePaddy - Find Your Ride Buddy | Carpooling in Nigeria',
+  title: 'RidePaddy - Private Car and Driver Hire in Nigeria',
   description:
-    'Join the RidePaddy waitlist for a carpooling platform being built for safer, more affordable shared commutes in Nigerian cities.',
+    'Book a vetted car and driver for interstate trips, airport transfers and day hire. RidePaddy is launching first in Lagos. Join the launch list.',
 };
 
 export default function HomePage() {
@@ -53,10 +38,7 @@ export default function HomePage() {
         <Features />
         <HowItWorks />
         <Team />
-        <Safety />
-        <Testimonials />
         <FAQ />
-        <DownloadApp />
         <Waitlist />
       </main>
       <Footer />

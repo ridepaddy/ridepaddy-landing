@@ -17,68 +17,69 @@ import { Card, CardContent } from '@/components/ui/card';
 const featureCards = [
   {
     icon: ShieldCheck,
-    title: 'Verified by design',
+    title: 'Vetted operators',
     description:
-      'Safer matching starts with identity checks, clear profiles, and trusted rider signals.',
+      'We check business registration, vehicle papers, insurance and driver licences before an operator can take a booking.',
     accent: 'bg-primary/15 text-primary',
   },
   {
     icon: MapPinned,
-    title: 'Route-smart matching',
+    title: 'Built around your itinerary',
     description:
-      'Meet people already headed your way instead of juggling scattered transport options.',
+      'You set the pickup, destination, date and time. The vehicle is yours for the trip.',
     accent: 'bg-secondary/10 text-secondary',
   },
   {
     icon: DollarSign,
-    title: 'Commutes that cost less',
+    title: 'One clear price',
     description:
-      'Passengers spend less. Drivers offset fuel and routine city travel without friction.',
+      'Compare quotes that state what is included, such as fuel, tolls and waiting time, before you pay.',
     accent: 'bg-primary/15 text-primary',
   },
   {
     icon: Clock3,
-    title: 'Built for everyday rhythm',
+    title: 'Confirmed before you travel',
     description:
-      'Morning runs, office commutes, campus routes, and regular pick-up schedules all fit naturally.',
+      'You receive your driver\'s name, photo and plate number ahead of pickup, and we confirm with the operator before the day.',
     accent: 'bg-secondary/10 text-secondary',
   },
 ];
 
 const valueProps = [
-  'Friendly route matching',
-  'Clear trip coordination',
-  'Community-first rider experience',
-  'Made for Nigerian urban mobility',
+  'Interstate trips, one-way or return',
+  'Airport pickups and drop-offs',
+  'Hourly and full-day hire with a driver',
+  'Sedans, SUVs and minivans',
 ];
 
 export function Features() {
   return (
-    <section id='features' className='px-4 py-20 sm:px-6 lg:px-8'>
+    <section id='features' className='px-4 py-12 sm:px-6 lg:px-8 lg:py-16'>
       <div className='mx-auto max-w-7xl'>
         <div className='section-shell p-8 sm:p-10 lg:p-14'>
           <div className='absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.14),transparent_60%)] lg:block' />
 
-          <div className='relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start'>
+          <div className='relative grid gap-12 xl:grid-cols-[0.9fr_1.1fr] xl:items-start'>
             <div>
               <FadeIn>
                 <Badge variant='secondary' className='mb-5 rounded-full px-4 py-2'>
                   <Sparkles className='mr-2 h-4 w-4' />
-                  Why the experience feels different
+                  Why book with RidePaddy
                 </Badge>
               </FadeIn>
 
               <FadeIn delay={0.1}>
                 <h2 className='section-title max-w-xl'>
-                  A cleaner, calmer way to move across the city.
+                  Private transport without the phone calls and haggling.
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
                 <p className='section-copy mt-5 max-w-xl'>
-                  RidePaddy is not just another booking flow. It is a more
-                  intentional commuting product built around familiarity,
-                  consistency, and trust.
+                  Hiring a car and driver usually means asking around,
+                  calling several businesses and negotiating on WhatsApp.
+                  RidePaddy does that work for you and stands behind the
+                  booking.
                 </p>
               </FadeIn>
 
@@ -98,7 +99,7 @@ export function Features() {
               <FadeIn delay={0.4}>
                 <div className='mt-8'>
                   <Button className='rounded-full px-6' asChild>
-                    <a href='#waitlist'>Get early access</a>
+                    <a href='#waitlist'>Join the launch list</a>
                   </Button>
                 </div>
               </FadeIn>
@@ -115,7 +116,7 @@ export function Features() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.08 }}
                     viewport={{ once: true, margin: '-10%' }}>
-                    <Card className='h-full rounded-[1.75rem] border-white/70 bg-white/80 shadow-[0_18px_50px_rgba(20,61,71,0.06)]'>
+                    <Card className='h-full rounded-[1.75rem] border-white/70 bg-white/80 shadow-[0_18px_50px_rgba(20,61,71,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(20,61,71,0.12)]'>
                       <CardContent className='p-7'>
                         <div className={`mb-5 inline-flex rounded-2xl p-3 ${feature.accent}`}>
                           <Icon className='h-6 w-6' />

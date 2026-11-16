@@ -97,32 +97,18 @@ const values = [
 const team = [
   {
     name: 'Maurice Ogbebor',
-    role: 'Co-Founder & CEO',
+    role: 'Founder',
     bio: '',
     image: '/images/mauricePhoto.jpg',
     linkedin: '#',
   },
   {
-    name: 'Abdulrasheed Tijani ',
-    role: 'Co-Founder & CTO',
+    name: 'Abdulrasheed Tijani',
+    role: 'Co-Founder',
     bio: '',
     image: '/images/rasheedPhoto.jpeg',
     linkedin:
       'https://www.linkedin.com/in/abdulrasheed-tijani-7459b1169?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-  },
-  {
-    name: 'Elijah Ugwu',
-    role: 'Chief Operating officer',
-    bio: '',
-    image: '/images/elijahPhoto.jpeg',
-    linkedin: '#',
-  },
-  {
-    name: 'Oluwayomi Adekanye',
-    role: 'VP Engineering',
-    bio: '',
-    image: '/images/kanyePhoto.jpg',
-    linkedin: '#',
   },
 ];
 
@@ -369,7 +355,7 @@ export function About() {
               </p>
             </div>
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
+            <div className='mx-auto grid max-w-2xl gap-8 md:grid-cols-2'>
               {team.map((member, index) => (
                 <motion.div
                   key={member.name}

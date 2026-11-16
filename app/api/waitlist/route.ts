@@ -10,17 +10,13 @@ export async function POST(request: Request) {
     const body = await readJsonBody(request);
 
     // Validate the request body
-    const validatedData = waitlistSchema.parse(body);
-    const { position } = await appendWaitlistSubmission(validatedData);
+    const { website, ...validatedData } = waitlistSchema.parse(body);
+
+    // A filled honeypot means a bot. Report success without storing anything.
+    if (!website) await appendWaitlistSubmission(validatedData);
 
     return NextResponse.json(
-      {
-        success: true,
-        message: 'Successfully joined the waitlist!',
-        data: {
-          position,
-        },
-      },
+      { success: true, message: 'You are on the launch list.' },
       { status: 200 }
     );
   } catch (error) {
@@ -44,7 +40,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: false,
-        error: 'Failed to join waitlist. Please try again later.',
+        error: 'We could not save your details. Please try again later.',
       },
       { status: error instanceof SubmissionStoreError ? error.statusCode : 500 }
     );

@@ -8,28 +8,38 @@ const faqs = [
   {
     question: 'What is RidePaddy?',
     answer:
-      'RidePaddy is a community-driven carpooling platform designed to help drivers and passengers coordinate safer, more affordable trips across Nigerian cities.',
+      'RidePaddy is a booking service for private, chauffeur-driven transport in Nigeria. You describe your trip and we arrange a vetted vehicle and driver at a fixed price.',
   },
   {
-    question: 'How do I join before launch?',
+    question: 'What can I book?',
     answer:
-      'Join the waitlist on the homepage. We will use that to notify you when RidePaddy opens in your city and when early access is available.',
+      'Interstate trips, airport pickups and drop-offs, and hourly or full-day hire with a driver. You book the whole vehicle, not a seat.',
   },
   {
-    question: 'Will RidePaddy launch in my city?',
+    question: 'Where are you launching?',
     answer:
-      'Launch happens city by city. Current demand is strongest in Lagos, Abuja, Port Harcourt, and Ibadan, with more cities added as rollout expands.',
+      'We are starting in Lagos, with trips to nearby cities such as Ibadan and Abeokuta and transfers at Lagos airport. Other cities follow as operators join.',
   },
   {
-    question: 'How does RidePaddy think about safety?',
+    question: 'How do I book before launch?',
     answer:
-      'The product is being built around identity checks, route visibility, emergency support, and clearer rider trust signals from the start.',
+      'Join the launch list on this page. We will contact you when bookings open on your route.',
+  },
+  {
+    question: 'How do you choose operators?',
+    answer:
+      'Operators are checked for business registration, vehicle papers, insurance and driver licences, and each vehicle is inspected before its first booking.',
+  },
+  {
+    question: 'I run a car-hire or transport business. Can I join?',
+    answer:
+      'Yes. Message us on WhatsApp or use the contact page and we will take you through the vetting steps.',
   },
 ] as const;
 
 export function FAQ() {
   return (
-    <section id='faq' className='px-4 py-20 sm:px-6 lg:px-8'>
+    <section id='faq' className='px-4 py-12 sm:px-6 lg:px-8 lg:py-16'>
       <div className='mx-auto max-w-7xl'>
         <div className='section-shell p-8 sm:p-10 lg:p-14'>
           <FadeIn>
@@ -39,8 +49,7 @@ export function FAQ() {
               </Badge>
               <h2 className='section-title'>Quick answers before launch</h2>
               <p className='section-copy mt-5'>
-                The essentials visitors usually want to know before they join
-                the waitlist or explore the app preview.
+                What people usually ask before joining the launch list.
               </p>
             </div>
           </FadeIn>
@@ -49,7 +58,7 @@ export function FAQ() {
             {faqs.map((faq) => (
               <Card
                 key={faq.question}
-                className='rounded-[1.6rem] border-white/70 bg-white/85 shadow-[0_18px_50px_rgba(20,61,71,0.05)]'>
+                className='rounded-[1.6rem] border-white/70 bg-white/85 shadow-[0_18px_50px_rgba(20,61,71,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(20,61,71,0.12)]'>
                 <CardContent className='p-6'>
                   <h3 className='text-lg font-heading font-semibold text-secondary'>
                     {faq.question}
