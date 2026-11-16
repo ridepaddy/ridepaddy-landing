@@ -55,9 +55,9 @@
   --color-card-foreground: hsl(var(--card-foreground));
 
   /* Typography */
-  --font-sans: var(--font-montserrat);
+  --font-sans: var(--font-creato-display);
   --font-heading: var(--font-creato-display);
-  --font-body: var(--font-montserrat);
+  --font-body: var(--font-creato-display);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -234,7 +234,12 @@
     max-width: 100vw;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
 }
@@ -301,7 +306,7 @@
 
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
-    filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
   }
 
   .hero-mesh {

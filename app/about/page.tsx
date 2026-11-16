@@ -8,7 +8,7 @@ import { StructuredData, organizationStructuredData } from '@/components/seo/str
 export const metadata: Metadata = {
   title: 'About RidePaddy - Our Story & Mission | Carpooling Nigeria',
   description:
-    'Learn about RidePaddy\'s mission to transform transportation in Nigeria. Meet our team, discover our values, and see how we\'re building the future of shared mobility across Africa.',
+    "Learn about RidePaddy's mission to transform transportation in Nigeria. Meet our team, discover our values, and see how we're building the future of shared mobility across Africa.",
   keywords: [
     'RidePaddy about',
     'carpooling Nigeria',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About RidePaddy - Our Story & Mission',
     description:
-      'Meet the team behind Nigeria\'s most trusted carpooling platform and learn about our mission to transform transportation.',
+      'Meet the team building RidePaddy and learn about our mission to improve shared transportation.',
     images: ['/images/Ride-Paddy-Brand.jpg'],
   },
   alternates: {
@@ -52,16 +52,12 @@ export default function AboutPage() {
     <>
       <StructuredData data={organizationStructuredData} />
       <Header />
-      <main className='pt-16'>
+      <main className="pt-16">
         {/* Breadcrumb */}
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 border-b border-gray-100'>
-          <Breadcrumb 
-            items={[
-              { label: 'About', current: true }
-            ]} 
-          />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 border-b border-gray-100">
+          <Breadcrumb items={[{ label: 'About', current: true }]} />
         </div>
-        
+
         <About />
       </main>
       <Footer />

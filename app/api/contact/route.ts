@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/validations';
-import { appendContactSubmission } from '@/lib/submission-store';
+import { appendContactSubmission, SubmissionStoreError } from '@/lib/submission-store';
+import { enforceRateLimit, readJsonBody } from '@/lib/api-security';
 
 export async function POST(request: Request) {
+  const limited = enforceRateLimit(request, 'contact');
+  if (limited) return limited;
   try {
-    const body = await request.json();
+    const body = await readJsonBody(request);
     const validatedData = contactSchema.parse(body);
 
     await appendContactSubmission(validatedData);
@@ -14,10 +17,14 @@ export async function POST(request: Request) {
         success: true,
         message: 'Your message has been received.',
       },
-      { status: 200 },
+      { status: 200 }
     );
   } catch (error) {
     console.error('Contact API error:', error);
+
+    if (error instanceof RangeError) {
+      return NextResponse.json({ success: false, error: error.message }, { status: 413 });
+    }
 
     if (error instanceof Error && error.name === 'ZodError') {
       return NextResponse.json(
@@ -26,7 +33,7 @@ export async function POST(request: Request) {
           error: 'Invalid data provided',
           details: error.message,
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -35,7 +42,7 @@ export async function POST(request: Request) {
         success: false,
         error: 'Failed to send your message. Please try again later.',
       },
-      { status: 500 },
+      { status: error instanceof SubmissionStoreError ? error.statusCode : 500 }
     );
   }
 }

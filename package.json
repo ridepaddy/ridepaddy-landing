@@ -21,6 +21,13 @@
       "prettier --write"
     ]
   },
+  "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6",
+      "baseline-browser-mapping": "2.11.21",
+      "browserslist": "4.28.9"
+    }
+  },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
     "@radix-ui/react-slot": "^1.2.3",
@@ -30,9 +37,9 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
-    "next": "16.0.10",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-hook-form": "^7.62.0",
     "react-whatsapp-chat-widget": "^1.1.6",
     "sonner": "^2.0.7",
@@ -45,10 +52,10 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
     "eslint": "^9",
-    "eslint-config-next": "16.0.10",
+    "eslint-config-next": "16.3.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
     "prettier": "^3.7.4",

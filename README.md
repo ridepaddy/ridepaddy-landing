@@ -1,3 +1,10 @@
+# RidePaddy website
+
+This is the canonical RidePaddy marketing-site repository. Form API routes
+forward validated submissions to durable webhook endpoints configured with
+`CONTACT_SUBMISSION_URL` and `WAITLIST_SUBMISSION_URL`; they never persist PII
+to the deployment filesystem. Copy `.env.example` to `.env.local` for setup.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
