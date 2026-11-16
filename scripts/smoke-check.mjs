@@ -13,6 +13,7 @@ const requiredFiles = [
   'components/sections/waitlist.tsx',
   'public/images/Splash.png',
   'public/images/new-onboarding.png',
+  '.env.example',
 ];
 
 for (const file of requiredFiles) {
@@ -24,12 +25,13 @@ assert.match(homePage, /<Hero \/>/);
 assert.match(homePage, /<Waitlist \/>/);
 assert.match(homePage, /<FAQ \/>/);
 
-const footer = await readFile(
-  path.join(root, 'components/layouts/footer.tsx'),
-  'utf8',
-);
+const footer = await readFile(path.join(root, 'components/layouts/footer.tsx'), 'utf8');
 assert.match(footer, /\/terms/);
 assert.match(footer, /\/privacy/);
 assert.match(footer, /\/contact/);
+
+const submissionStore = await readFile(path.join(root, 'lib/submission-store.ts'), 'utf8');
+assert.doesNotMatch(submissionStore, /node:fs|appendFile|process\.cwd/);
+assert.match(submissionStore, /SUBMISSION_URL/);
 
 console.log('Smoke check passed.');

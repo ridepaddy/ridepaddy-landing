@@ -25,7 +25,7 @@ export const faqStructuredData = {
       name: 'Is RidePaddy safe?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes! We prioritize safety with verified user profiles, real-time GPS tracking, in-app emergency SOS, secure payment systems, and a rating system for all users.',
+        text: 'RidePaddy is being designed around identity checks, trip visibility, reporting, and two-way ratings. Exact safety features and availability will be published before launch in each city.',
       },
     },
     {

@@ -1,54 +1,43 @@
-import { mkdir, readFile, appendFile } from 'node:fs/promises';
-import path from 'node:path';
+type SubmissionKind = 'waitlist' | 'contact';
 
-const submissionsDir = path.join(process.cwd(), 'data', 'submissions');
-
-async function ensureDir() {
-  await mkdir(submissionsDir, { recursive: true });
-}
-
-async function readLines(filePath: string) {
-  try {
-    const content = await readFile(filePath, 'utf8');
-    return content.split('\n').filter(Boolean);
-  } catch {
-    return [];
+export class SubmissionStoreError extends Error {
+  constructor(
+    message: string,
+    readonly statusCode = 502
+  ) {
+    super(message);
+    this.name = 'SubmissionStoreError';
   }
 }
 
-export async function appendWaitlistSubmission(
-  submission: Record<string, unknown>,
-) {
-  await ensureDir();
-  const filePath = path.join(submissionsDir, 'waitlist.jsonl');
-  const existingLines = await readLines(filePath);
-  const position = existingLines.length + 1;
-
-  await appendFile(
-    filePath,
-    `${JSON.stringify({
-      ...submission,
-      position,
-      submittedAt: new Date().toISOString(),
-    })}\n`,
-    'utf8',
-  );
-
-  return { position };
+async function forwardSubmission(kind: SubmissionKind, submission: Record<string, unknown>) {
+  const endpoint = process.env[`${kind.toUpperCase()}_SUBMISSION_URL`];
+  if (!endpoint) throw new SubmissionStoreError('Submission service is not configured', 503);
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(process.env.SUBMISSION_WEBHOOK_TOKEN
+        ? { Authorization: `Bearer ${process.env.SUBMISSION_WEBHOOK_TOKEN}` }
+        : {}),
+    },
+    body: JSON.stringify({ ...submission, submittedAt: new Date().toISOString() }),
+    cache: 'no-store',
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!response.ok)
+    throw new SubmissionStoreError(`Submission service returned ${response.status}`);
+  const contentType = response.headers.get('content-type');
+  return contentType?.includes('application/json')
+    ? ((await response.json()) as Record<string, unknown>)
+    : {};
 }
 
-export async function appendContactSubmission(
-  submission: Record<string, unknown>,
-) {
-  await ensureDir();
-  const filePath = path.join(submissionsDir, 'contact.jsonl');
+export async function appendWaitlistSubmission(submission: Record<string, unknown>) {
+  const result = await forwardSubmission('waitlist', submission);
+  return { position: typeof result.position === 'number' ? result.position : null };
+}
 
-  await appendFile(
-    filePath,
-    `${JSON.stringify({
-      ...submission,
-      submittedAt: new Date().toISOString(),
-    })}\n`,
-    'utf8',
-  );
+export async function appendContactSubmission(submission: Record<string, unknown>) {
+  await forwardSubmission('contact', submission);
 }

@@ -10,10 +10,10 @@ import { SlideIn } from '@/components/animations/slide-in';
 import { APP_STORE_LINKS } from '@/lib/constants';
 
 const APP_FEATURES = [
-  'Real-time GPS tracking and safety features',
+  'Trip visibility and safety features in development',
   'Secure in-app payments and messaging',
   'Smart route matching and scheduling',
-  '24/7 customer support and emergency assistance',
+  'Launch support coverage published by city',
 ] as const;
 
 const STATS = [
@@ -40,54 +40,58 @@ const STATS = [
 export function DownloadApp() {
   return (
     <section
-      id='download'
-      className='py-24 bg-gradient-to-br from-primary to-primary-60'
-      aria-labelledby='download-heading'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='grid lg:grid-cols-2 gap-12 items-center'>
+      id="download"
+      className="py-24 bg-gradient-to-br from-primary to-primary-60"
+      aria-labelledby="download-heading"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
-          <div className='text-secondary'>
+          <div className="text-secondary">
             <FadeIn>
               <h2
-                id='download-heading'
-                className='text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 leading-tight'>
-                Download the <span className='block'>RidePaddy App</span>
+                id="download-heading"
+                className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 leading-tight"
+              >
+                Download the <span className="block">RidePaddy App</span>
               </h2>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <p className='text-xl font-body text-secondary/90 mb-8 leading-relaxed'>
-                Join thousands of Nigerians who are already saving money and
-                making friends through carpooling. Available on iOS and Android.
+              <p className="text-xl font-body text-secondary/90 mb-8 leading-relaxed">
+                Join thousands of Nigerians who are already saving money and making friends through
+                carpooling. Available on iOS and Android.
               </p>
             </FadeIn>
 
             {/* App Store Badges */}
             <FadeIn delay={0.4}>
-              <div className='flex flex-col sm:flex-row gap-4 mb-12'>
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Link
                   href={APP_STORE_LINKS.ios}
-                  className='block hover:scale-105 transition-transform duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg'
-                  aria-label='Download RidePaddy on the App Store'>
+                  className="block hover:scale-105 transition-transform duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg"
+                  aria-label="Download RidePaddy on the App Store"
+                >
                   <Image
-                    src='/images/app-store-badge.svg'
-                    alt='Download on App Store'
+                    src="/images/app-store-badge.svg"
+                    alt="Download on App Store"
                     width={200}
                     height={60}
-                    className='h-14 w-auto'
+                    className="h-14 w-auto"
                     priority
                   />
                 </Link>
                 <Link
                   href={APP_STORE_LINKS.android}
-                  className='block hover:scale-105 transition-transform duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg'
-                  aria-label='Get RidePaddy on Google Play'>
+                  className="block hover:scale-105 transition-transform duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg"
+                  aria-label="Get RidePaddy on Google Play"
+                >
                   <Image
-                    src='/images/google-play-badge.png'
-                    alt='Get it on Google Play'
+                    src="/images/google-play-badge.png"
+                    alt="Get it on Google Play"
                     width={200}
                     height={60}
-                    className='h-14 w-auto'
+                    className="h-14 w-auto"
                     priority
                   />
                 </Link>
@@ -96,15 +100,16 @@ export function DownloadApp() {
 
             {/* Features List */}
             <FadeIn delay={0.6}>
-              <ul className='space-y-4' aria-label='App features'>
+              <ul className="space-y-4" aria-label="App features">
                 {APP_FEATURES.map((feature, index) => (
-                  <li key={index} className='flex items-center space-x-3'>
+                  <li key={index} className="flex items-center space-x-3">
                     <div
-                      className='w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0'
-                      aria-hidden='true'>
-                      <div className='w-2 h-2 bg-secondary rounded-full' />
+                      className="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0"
+                      aria-hidden="true"
+                    >
+                      <div className="w-2 h-2 bg-secondary rounded-full" />
                     </div>
-                    <span className='font-body text-secondary/90'>{feature}</span>
+                    <span className="font-body text-secondary/90">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -112,18 +117,18 @@ export function DownloadApp() {
           </div>
 
           {/* Right Column - App Preview */}
-          <div className='relative'>
-            <SlideIn direction='right' delay={0.3}>
-              <div className='relative flex justify-center'>
-                <div className='relative z-10 w-full max-w-[28rem]'>
-                  <div className='section-shell overflow-hidden rounded-[2rem] p-3 shadow-2xl'>
-                    <div className='relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-card'>
+          <div className="relative">
+            <SlideIn direction="right" delay={0.3}>
+              <div className="relative flex justify-center">
+                <div className="relative z-10 w-full max-w-[28rem]">
+                  <div className="section-shell overflow-hidden rounded-[2rem] p-3 shadow-2xl">
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-card">
                       <Image
-                        src='/images/Splash.png'
-                        alt='RidePaddy splash screen'
+                        src="/images/Splash.png"
+                        alt="RidePaddy splash screen"
                         fill
-                        className='object-cover'
-                        sizes='(max-width: 768px) 100vw, 448px'
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 448px"
                       />
                     </div>
                   </div>
@@ -135,19 +140,18 @@ export function DownloadApp() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: '-10%' }}
                   transition={{ duration: 0.6, delay: 0.8 }}
-                  className='absolute -right-8 top-1/2 transform -translate-y-1/2'>
-                  <Card className='bg-card/95 backdrop-blur-sm shadow-xl'>
-                    <CardContent className='p-6 text-center'>
-                      <QrCode
-                        className='h-8 w-8 text-primary mx-auto mb-3'
-                        aria-hidden='true'
-                      />
+                  className="absolute -right-8 top-1/2 transform -translate-y-1/2"
+                >
+                  <Card className="bg-card/95 backdrop-blur-sm shadow-xl">
+                    <CardContent className="p-6 text-center">
+                      <QrCode className="h-8 w-8 text-primary mx-auto mb-3" aria-hidden="true" />
                       <div
-                        className='w-24 h-24 bg-secondary rounded-lg mx-auto mb-3 flex items-center justify-center'
-                        aria-label='QR code to download RidePaddy app'>
-                        <QrCode className='h-16 w-16 text-white' />
+                        className="w-24 h-24 bg-secondary rounded-lg mx-auto mb-3 flex items-center justify-center"
+                        aria-label="QR code to download RidePaddy app"
+                      >
+                        <QrCode className="h-16 w-16 text-white" />
                       </div>
-                      <p className='text-sm font-body text-muted-foreground font-medium'>
+                      <p className="text-sm font-body text-muted-foreground font-medium">
                         Scan to Download
                       </p>
                     </CardContent>
@@ -170,20 +174,20 @@ export function DownloadApp() {
                         ease: 'easeInOut',
                         delay: stat.delay,
                       }}
-                      className={`absolute ${stat.position} bg-card rounded-2xl p-4 shadow-lg`}>
-                      <div className='flex items-center space-x-3'>
+                      className={`absolute ${stat.position} bg-card rounded-2xl p-4 shadow-lg`}
+                    >
+                      <div className="flex items-center space-x-3">
                         <div
-                          className={`w-12 h-12 ${stat.bgColor} rounded-xl flex items-center justify-center`}>
+                          className={`w-12 h-12 ${stat.bgColor} rounded-xl flex items-center justify-center`}
+                        >
                           <IconComponent
                             className={`h-6 w-6 ${stat.iconColor}`}
-                            aria-hidden='true'
+                            aria-hidden="true"
                           />
                         </div>
                         <div>
-                          <div className='font-heading font-bold text-secondary'>
-                            {stat.value}
-                          </div>
-                          <div className='text-sm font-body text-muted-foreground'>
+                          <div className="font-heading font-bold text-secondary">{stat.value}</div>
+                          <div className="text-sm font-body text-muted-foreground">
                             {stat.label}
                           </div>
                         </div>
@@ -198,10 +202,10 @@ export function DownloadApp() {
 
         {/* Bottom CTA */}
         <FadeIn delay={1.0}>
-          <div className='text-center mt-16'>
-            <div className='inline-flex items-center space-x-2 bg-secondary/10 rounded-full px-6 py-3 backdrop-blur-sm'>
-              <ArrowRight className='h-5 w-5 text-secondary' aria-hidden='true' />
-              <span className='font-body text-secondary font-medium'>
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center space-x-2 bg-secondary/10 rounded-full px-6 py-3 backdrop-blur-sm">
+              <ArrowRight className="h-5 w-5 text-secondary" aria-hidden="true" />
+              <span className="font-body text-secondary font-medium">
                 Be first to ride with RidePaddy
               </span>
             </div>

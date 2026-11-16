@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
-import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
 import WhatsAppChat from '@/components/WhatsAppWidget';
@@ -52,21 +51,13 @@ const creatoDisplay = localFont({
   fallback: ['system-ui', 'sans-serif'],
 });
 
-// Secondary Font - Montserrat
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-montserrat',
-  weight: ['300', '400', '500', '600', '700'],
-});
-
 export const metadata: Metadata = {
   title: {
     default: 'RidePaddy - Find Your Ride Buddy',
     template: '%s | RidePaddy',
   },
   description:
-    'Connect with trusted drivers and passengers for safe, affordable carpooling across Nigeria. Join the RidePaddy community and turn your commute into a shared journey.',
+    'Join the waitlist for RidePaddy, a carpooling platform being built for safer, more affordable shared commutes in Nigeria.',
   keywords: [
     'carpooling',
     'ride sharing',
@@ -91,7 +82,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'RidePaddy - Find Your Ride Buddy',
     description:
-      'Connect with trusted drivers and passengers for safe, affordable carpooling across Nigeria.',
+      'A carpooling platform being built for safer, more affordable shared commutes in Nigeria.',
     url: 'https://ridepaddy.com',
     siteName: 'RidePaddy',
     images: [
@@ -109,7 +100,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'RidePaddy - Find Your Ride Buddy',
     description:
-      'Connect with trusted drivers and passengers for safe, affordable carpooling across Nigeria.',
+      'A carpooling platform being built for safer, more affordable shared commutes in Nigeria.',
     images: ['/images/Ride-Paddy-Brand.jpg'],
     creator: '@ridepaddy',
   },
@@ -158,8 +149,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${creatoDisplay.variable} ${montserrat.variable}`}>
-      <body className={`${montserrat.className} antialiased`}>
+    <html lang="en" className={creatoDisplay.variable}>
+      <body className={`${creatoDisplay.className} antialiased`}>
         <NetworkStatus />
         {children}
         <WhatsAppChat />

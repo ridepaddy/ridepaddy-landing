@@ -27,12 +27,12 @@ const safetyFeatures = [
     icon: UserCheck,
     title: 'Identity Verification',
     description:
-      'Every driver undergoes comprehensive background checks and document verification.',
+      'Driver identity and document verification are part of the planned launch process.',
     details: [
       'National ID verification',
       "Driver's license validation",
       'Vehicle registration check',
-      'Real-time photo verification',
+      'Photo verification workflow',
     ],
     stat: 'Identity-checked onboarding',
     color: 'bg-primary-20 text-primary',
@@ -40,36 +40,34 @@ const safetyFeatures = [
   {
     icon: MapPin,
     title: 'Real-Time Tracking',
-    description:
-      'Live GPS tracking with automatic trip sharing to your emergency contacts.',
+    description: 'Live trip visibility and optional emergency-contact sharing are in development.',
     details: [
       'Live location sharing',
       'Route deviation alerts',
       'Emergency contact notifications',
       'Trip progress monitoring',
     ],
-    stat: '24/7 monitoring',
+    stat: 'In development',
     color: 'bg-primary-20 text-primary',
   },
   {
     icon: Phone,
     title: 'Emergency Support',
-    description:
-      'One-tap emergency button connects you to our safety team and authorities.',
+    description: 'An emergency-assistance flow is planned; availability will vary by launch city.',
     details: [
       'Instant emergency alerts',
       'Direct line to safety team',
-      'Police integration',
-      'Medical emergency response',
+      'Emergency-service guidance',
+      'Incident response workflow',
     ],
-    stat: '<30 sec response',
+    stat: 'Planned capability',
     color: 'bg-destructive/10 text-destructive',
   },
   {
     icon: Star,
     title: 'Community Rating',
     description:
-      'Transparent rating system helps you choose the safest, most reliable drivers.',
+      'A two-way rating system is planned to help riders and drivers make informed choices.',
     details: [
       'Two-way rating system',
       'Detailed feedback reviews',
@@ -82,29 +80,27 @@ const safetyFeatures = [
   {
     icon: Lock,
     title: 'Secure Communication',
-    description:
-      'All messages encrypted and phone numbers protected for your privacy.',
+    description: 'Private in-app communication and phone-number protection are planned.',
     details: [
-      'End-to-end encryption',
+      'Encrypted transport',
       'Anonymous phone calls',
       'Secure messaging',
       'Privacy protection',
     ],
-    stat: '256-bit encryption',
+    stat: 'Security by design',
     color: 'bg-secondary-20 text-secondary',
   },
   {
     icon: Headphones,
-    title: '24/7 Support',
-    description:
-      'Round-the-clock customer support in multiple Nigerian languages.',
+    title: 'Launch Support',
+    description: 'Support coverage and languages will be published for each launch city.',
     details: [
       'Live chat support',
       'Multi-language assistance',
       'Incident resolution',
       'Safety guidance',
     ],
-    stat: 'Always available',
+    stat: 'Launch coverage varies',
     color: 'bg-primary-20 text-primary',
   },
 ];
@@ -161,60 +157,58 @@ const verificationSteps = [
 
 export function Safety() {
   return (
-    <section id='safety' className='py-24 bg-muted'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <section id="safety" className="py-24 bg-muted">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <FadeIn>
-          <div className='text-center mb-16'>
-            <Badge variant='secondary' className='mb-4 px-4 py-2'>
-              <Shield className='h-4 w-4 mr-2' />
+          <div className="text-center mb-16">
+            <Badge variant="secondary" className="mb-4 px-4 py-2">
+              <Shield className="h-4 w-4 mr-2" />
               Your Safety is Our Priority
             </Badge>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-6'>
-              Travel with Complete{' '}
-              <span className='gradient-text block'>Peace of Mind</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary mb-6">
+              Travel with Complete <span className="gradient-text block">Peace of Mind</span>
             </h2>
-            <p className='text-lg font-body text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
-              RidePaddy implements industry-leading safety measures to ensure
-              every trip is secure, monitored, and protected. Your safety isn&apos;t
-              just a feature—it&apos;s our foundation.
+            <p className="text-lg font-body text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              RidePaddy implements industry-leading safety measures to ensure every trip is secure,
+              monitored, and protected. Your safety isn&apos;t just a feature—it&apos;s our
+              foundation.
             </p>
           </div>
         </FadeIn>
 
         {/* Safety Stats */}
         <FadeIn delay={0.2}>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-6 mb-16'>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {safetyStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className='text-center bg-card rounded-2xl p-6 shadow-sm'>
-                <div className='text-2xl md:text-3xl font-heading font-bold text-primary mb-2'>
+                className="text-center bg-card rounded-2xl p-6 shadow-sm"
+              >
+                <div className="text-2xl md:text-3xl font-heading font-bold text-primary mb-2">
                   {stat.value}
                 </div>
-                <div className='font-body font-medium text-secondary mb-1'>
-                  {stat.label}
-                </div>
-                <div className='text-sm font-body text-muted-foreground'>{stat.description}</div>
+                <div className="font-body font-medium text-secondary mb-1">{stat.label}</div>
+                <div className="text-sm font-body text-muted-foreground">{stat.description}</div>
               </motion.div>
             ))}
           </div>
         </FadeIn>
 
-        <div className='grid lg:grid-cols-2 gap-16 items-center mb-20'>
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Left Column - Safety Features */}
           <div>
-            <SlideIn direction='left'>
-              <h3 className='text-2xl md:text-3xl font-heading font-bold text-secondary mb-8'>
+            <SlideIn direction="left">
+              <h3 className="text-2xl md:text-3xl font-heading font-bold text-secondary mb-8">
                 Comprehensive Safety Features
               </h3>
             </SlideIn>
 
             <StaggerContainer>
-              <div className='space-y-6'>
+              <div className="space-y-6">
                 {safetyFeatures.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
@@ -223,32 +217,35 @@ export function Safety() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}>
-                      <Card className='border-0 shadow-md hover-lift group'>
-                        <CardContent className='p-6'>
-                          <div className='flex items-start space-x-4'>
+                      viewport={{ once: true }}
+                    >
+                      <Card className="border-0 shadow-md hover-lift group">
+                        <CardContent className="p-6">
+                          <div className="flex items-start space-x-4">
                             <div
-                              className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                              <Icon className='h-6 w-6' />
+                              className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                            >
+                              <Icon className="h-6 w-6" />
                             </div>
-                            <div className='flex-1'>
-                              <div className='flex items-center justify-between mb-2'>
-                                <h4 className='font-heading font-bold text-secondary'>
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between mb-2">
+                                <h4 className="font-heading font-bold text-secondary">
                                   {feature.title}
                                 </h4>
-                                <Badge variant='secondary' className='text-xs'>
+                                <Badge variant="secondary" className="text-xs">
                                   {feature.stat}
                                 </Badge>
                               </div>
-                              <p className='font-body text-muted-foreground mb-3 leading-relaxed'>
+                              <p className="font-body text-muted-foreground mb-3 leading-relaxed">
                                 {feature.description}
                               </p>
-                              <ul className='space-y-1'>
+                              <ul className="space-y-1">
                                 {feature.details.map((detail, i) => (
                                   <li
                                     key={i}
-                                    className='flex items-center text-sm font-body text-muted-foreground'>
-                                    <div className='w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0' />
+                                    className="flex items-center text-sm font-body text-muted-foreground"
+                                  >
+                                    <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
                                     {detail}
                                   </li>
                                 ))}
@@ -265,64 +262,64 @@ export function Safety() {
           </div>
 
           {/* Right Column - Safety Dashboard Visual */}
-          <div className='relative'>
-            <SlideIn direction='right' delay={0.4}>
-              <div className='relative'>
+          <div className="relative">
+            <SlideIn direction="right" delay={0.4}>
+              <div className="relative">
                 {/* Main Safety Dashboard Mockup */}
-                <div className='relative z-10 bg-card rounded-3xl p-8 shadow-2xl'>
-                  <div className='flex items-center justify-between mb-6'>
-                    <h4 className='font-heading font-bold text-secondary'>
-                      Safety Dashboard
-                    </h4>
-                    <div className='flex items-center space-x-2'>
-                      <div className='w-2 h-2 bg-primary rounded-full' />
-                      <span className='text-sm font-body text-muted-foreground'>Active</span>
+                <div className="relative z-10 bg-card rounded-3xl p-8 shadow-2xl">
+                  <div className="flex items-center justify-between mb-6">
+                    <h4 className="font-heading font-bold text-secondary">Safety Dashboard</h4>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-primary rounded-full" />
+                      <span className="text-sm font-body text-muted-foreground">Active</span>
                     </div>
                   </div>
 
                   {/* Live Trip Monitoring */}
-                  <div className='space-y-4'>
-                    <div className='bg-primary-20 border border-primary-40 rounded-xl p-4'>
-                      <div className='flex items-center space-x-3 mb-3'>
-                        <MapPin className='h-5 w-5 text-primary' />
-                        <span className='font-body font-medium text-secondary'>
+                  <div className="space-y-4">
+                    <div className="bg-primary-20 border border-primary-40 rounded-xl p-4">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <MapPin className="h-5 w-5 text-primary" />
+                        <span className="font-body font-medium text-secondary">
                           Live Trip Monitoring
                         </span>
                       </div>
-                      <div className='text-sm font-body text-foreground'>
+                      <div className="text-sm font-body text-foreground">
                         Route: Surulere → Victoria Island
                       </div>
-                      <div className='text-sm font-body text-foreground'>
+                      <div className="text-sm font-body text-foreground">
                         ETA: 8:45 AM • 15 mins remaining
                       </div>
                     </div>
 
-                    <div className='bg-secondary-20 border border-secondary-40 rounded-xl p-4'>
-                      <div className='flex items-center space-x-3 mb-3'>
-                        <Shield className='h-5 w-5 text-secondary' />
-                        <span className='font-body font-medium text-secondary'>
+                    <div className="bg-secondary-20 border border-secondary-40 rounded-xl p-4">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <Shield className="h-5 w-5 text-secondary" />
+                        <span className="font-body font-medium text-secondary">
                           Driver Verified
                         </span>
                       </div>
-                      <div className='flex items-center space-x-2'>
-                        <div className='w-8 h-8 brand-gradient rounded-full' />
+                      <div className="flex items-center space-x-2">
+                        <div className="w-8 h-8 brand-gradient rounded-full" />
                         <div>
-                          <div className='text-sm font-body font-medium text-secondary'>Adebayo O.</div>
-                          <div className='text-xs font-body text-muted-foreground'>
+                          <div className="text-sm font-body font-medium text-secondary">
+                            Adebayo O.
+                          </div>
+                          <div className="text-xs font-body text-muted-foreground">
                             4.9★ • 500+ trips
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className='bg-primary-20 border border-primary-40 rounded-xl p-4'>
-                      <div className='flex items-center space-x-3 mb-3'>
-                        <Heart className='h-5 w-5 text-primary' />
-                        <span className='font-body font-medium text-secondary'>
+                    <div className="bg-primary-20 border border-primary-40 rounded-xl p-4">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <Heart className="h-5 w-5 text-primary" />
+                        <span className="font-body font-medium text-secondary">
                           Emergency Contacts
                         </span>
                       </div>
-                      <div className='text-sm font-body text-foreground'>
+                      <div className="text-sm font-body text-foreground">
                         2 contacts notified • Trip shared
                       </div>
                     </div>
@@ -330,10 +327,11 @@ export function Safety() {
 
                   {/* Emergency Button */}
                   <Button
-                    variant='destructive'
-                    className='w-full mt-6 shadow-lg hover:shadow-xl'
-                    size='lg'>
-                    <AlertTriangle className='h-5 w-5 mr-2' />
+                    variant="destructive"
+                    className="w-full mt-6 shadow-lg hover:shadow-xl"
+                    size="lg"
+                  >
+                    <AlertTriangle className="h-5 w-5 mr-2" />
                     Emergency Alert
                   </Button>
                 </div>
@@ -347,10 +345,11 @@ export function Safety() {
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
-                  className='absolute -top-4 -right-4 bg-primary text-white p-4 rounded-2xl shadow-lg z-20'>
-                  <div className='text-center'>
-                    <div className='text-2xl font-heading font-bold'>99.8%</div>
-                    <div className='text-xs font-body opacity-90'>Safe Trips</div>
+                  className="absolute -top-4 -right-4 bg-primary text-white p-4 rounded-2xl shadow-lg z-20"
+                >
+                  <div className="text-center">
+                    <div className="text-2xl font-heading font-bold">99.8%</div>
+                    <div className="text-xs font-body opacity-90">Safe Trips</div>
                   </div>
                 </motion.div>
 
@@ -363,10 +362,11 @@ export function Safety() {
                     ease: 'easeInOut',
                     delay: 2,
                   }}
-                  className='absolute -bottom-4 -left-4 bg-secondary text-white p-4 rounded-2xl shadow-lg z-20'>
-                  <div className='text-center'>
-                    <div className='text-2xl font-heading font-bold'>&lt;30s</div>
-                    <div className='text-xs font-body opacity-90'>Response</div>
+                  className="absolute -bottom-4 -left-4 bg-secondary text-white p-4 rounded-2xl shadow-lg z-20"
+                >
+                  <div className="text-center">
+                    <div className="text-2xl font-heading font-bold">&lt;30s</div>
+                    <div className="text-xs font-body opacity-90">Response</div>
                   </div>
                 </motion.div>
               </div>
@@ -376,19 +376,18 @@ export function Safety() {
 
         {/* Driver Verification Process */}
         <FadeIn delay={0.6}>
-          <div className='bg-card rounded-3xl p-8 md:p-12 shadow-lg'>
-            <div className='text-center mb-12'>
-              <h3 className='text-2xl md:text-3xl font-heading font-bold text-secondary mb-4'>
+          <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-heading font-bold text-secondary mb-4">
                 How We Verify Every Driver
               </h3>
-              <p className='font-body text-muted-foreground max-w-2xl mx-auto'>
-                Our rigorous 4-step verification process ensures that only the
-                most trustworthy and qualified drivers join the RidePaddy
-                community.
+              <p className="font-body text-muted-foreground max-w-2xl mx-auto">
+                Our rigorous 4-step verification process ensures that only the most trustworthy and
+                qualified drivers join the RidePaddy community.
               </p>
             </div>
 
-            <div className='grid md:grid-cols-4 gap-8'>
+            <div className="grid md:grid-cols-4 gap-8">
               {verificationSteps.map((step, index) => {
                 const Icon = step.icon;
                 return (
@@ -397,22 +396,21 @@ export function Safety() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.2 }}
-                    className='text-center group'>
-                    <div className='relative mb-6'>
-                      <div className='w-16 h-16 bg-primary-20 rounded-2xl flex items-center justify-center mx-auto group-hover:bg-primary group-hover:text-white transition-all duration-300'>
-                        <Icon className='h-8 w-8 text-primary group-hover:text-white' />
+                    className="text-center group"
+                  >
+                    <div className="relative mb-6">
+                      <div className="w-16 h-16 bg-primary-20 rounded-2xl flex items-center justify-center mx-auto group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <Icon className="h-8 w-8 text-primary group-hover:text-white" />
                       </div>
-                      <div className='absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-heading font-bold text-sm'>
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-heading font-bold text-sm">
                         {step.step}
                       </div>
                       {index < verificationSteps.length - 1 && (
-                        <div className='hidden md:block absolute top-8 left-full w-full h-0.5 bg-muted -z-10' />
+                        <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-muted -z-10" />
                       )}
                     </div>
-                    <h4 className='font-heading font-bold text-secondary mb-3'>
-                      {step.title}
-                    </h4>
-                    <p className='text-sm font-body text-muted-foreground leading-relaxed'>
+                    <h4 className="font-heading font-bold text-secondary mb-3">{step.title}</h4>
+                    <p className="text-sm font-body text-muted-foreground leading-relaxed">
                       {step.description}
                     </p>
                   </motion.div>
@@ -424,34 +422,35 @@ export function Safety() {
 
         {/* Safety Guarantee */}
         <FadeIn delay={0.8}>
-          <div className='text-center mt-16 brand-gradient rounded-3xl p-12 text-white shadow-2xl relative overflow-hidden'>
+          <div className="text-center mt-16 brand-gradient rounded-3xl p-12 text-white shadow-2xl relative overflow-hidden">
             {/* Gradient overlay for depth */}
-            <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 rounded-3xl'></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 rounded-3xl"></div>
             {/* Decorative elements */}
-            <div className='absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl'></div>
-            <div className='absolute bottom-0 left-0 w-24 h-24 bg-primary/20 rounded-full blur-xl'></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
 
-            <div className='relative z-10'>
-              <Shield className='h-16 w-16 mx-auto mb-6 opacity-90' />
-            <h3 className='text-2xl md:text-3xl font-heading font-bold mb-4'>
-              Our Safety Guarantee
-            </h3>
-            <p className='text-lg font-body text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed'>
-              If you ever feel unsafe during a RidePaddy trip, we&apos;ll immediately
-              connect you with emergency services and cover any costs associated
-              with getting you to safety.
-            </p>
-            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-              <Button size='lg' variant='secondary'>
-                Learn More About Safety
-              </Button>
-              <Button
-                size='lg'
-                variant='outline'
-                className='border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary transition-all duration-200'>
-                Download App
-              </Button>
-            </div>
+            <div className="relative z-10">
+              <Shield className="h-16 w-16 mx-auto mb-6 opacity-90" />
+              <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+                Our Safety Commitment
+              </h3>
+              <p className="text-lg font-body text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                We are designing RidePaddy around clearer identity, trip visibility, reporting, and
+                emergency guidance. Exact capabilities and response coverage will be published
+                before rides begin in each city.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" variant="secondary">
+                  Learn More About Safety
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary transition-all duration-200"
+                >
+                  Download App
+                </Button>
+              </div>
             </div>
           </div>
         </FadeIn>
